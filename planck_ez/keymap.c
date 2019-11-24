@@ -1,5 +1,3 @@
-/* Copyright 2015-2017 Jack Humbert
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
@@ -86,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,------------------------------------------------------------------------------------.
  * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |   -   |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
- * |      | Home |  Up  | End  | PgUp |      |      |   `  |  ~   | MoUp |      |   _   |
+ * |      |      | Home |  Up  | End  | PgUp |      |   `  |  ~   | MoUp |      |   _   |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
  * | Shift| Left | Down |Right | PgDn |      |      |      | MoLft| MoDwn| MoRgt|       |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
@@ -95,8 +93,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT_planck_grid(
     XXXXXXX, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,          KC_6,           KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-    XXXXXXX, KC_HOME, KC_UP,   KC_END,  KC_PGUP, XXXXXXX,       XXXXXXX,        KC_GRV,  KC_TILD, XXXXXXX, XXXXXXX, KC_UNDS,
-    _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, XXXXXXX,       XXXXXXX,        XXXXXXX, MT(KC_MS_LEFT, KC_BTN1), XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, KC_HOME, KC_UP,   KC_END,  KC_PGUP,       XXXXXXX,        KC_GRV,  KC_TILD, XXXXXXX, XXXXXXX, KC_UNDS,
+    _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,       XXXXXXX,        XXXXXXX, MT(KC_MS_LEFT, KC_BTN1), XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, KC_LGUI, _______, KC_LALT, RCTL_T(KC_DEL),RCTL_T(KC_DEL), XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
