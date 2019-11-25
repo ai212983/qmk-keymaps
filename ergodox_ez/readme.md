@@ -3,7 +3,11 @@
 
 ## Features wishlist
 
-* Launchbar key
+* App-Specific keys
+  * Switch keyboard layouts
+  * Audio player (via Keyboard Maestro)
+  * Misson Control
+  * Move left/right a space 
 * NKRO enabled (do i really need it?)
 * Plover/Steno layer
 * Home/End keys
@@ -14,6 +18,7 @@
 
 * Disable incorrect sequences?
   * Shift + 9/0 for brackets `()`
+
 
 ### References
 

@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Shift |   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  | Lang |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |GuiDel|AltBsp|LOWER |    Space    |RAISE |CtlEnt|      |PrvSpc|NxtSpc|
+ * | Meh  |      |GuiDel|AltBsp|LOWER |    Space    |RAISE |CtlEnt|      |PrvSpc|NxtSpc|
  * `-----------------------------------------------------------------------------------'
  */
 
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,          KC_Q,    KC_W,           KC_F,            KC_P,  KC_G,   KC_J,   KC_L,  KC_U,           KC_Y,    KC_SCLN, KC_BSLS,
     HYPR_T(KC_RGHT), KC_A,    KC_R,           KC_S,            KC_T,  KC_D,   KC_H,   KC_N,  KC_E,           KC_I,    KC_O,    KC_QUOT,
     KC_LSFT,         KC_Z,    KC_X,           KC_C,            KC_V,  KC_B,   KC_K,   KC_M,  KC_COMM,        KC_DOT,  KC_SLSH, T_LANG,
-    XXXXXXX,         XXXXXXX, LGUI_T(KC_DEL), LALT_T(KC_BSPC), LOWER, KC_SPC, KC_SPC, RAISE, RCTL_T(KC_ENT), XXXXXXX, PRV_SPC, NXT_SPC
+    KC_MEH,          XXXXXXX, LGUI_T(KC_DEL), LALT_T(KC_BSPC), LOWER, KC_SPC, KC_SPC, RAISE, RCTL_T(KC_ENT), XXXXXXX, PRV_SPC, NXT_SPC
 ),
 
 
@@ -73,9 +73,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Hyper|  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |   {  |   }  | Vol- |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|      |      |      |      |      |      |      |      |   [  |   ]  | Plyr |
+ * |Shift |      |      |      |      |      |      |      |      |   [  |   ]  | Plyr |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      | LGui | Alt  |------|             |RAISE |RCtrl | Prev |Pl/Pau| Next |
+ * | Meh  |      | LGui | Alt  |------|             |RAISE |RCtrl | Prev |Pl/Pau| Next |
  * `-----------------------------------------------------------------------------------'
  */
 
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_F1,   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_VOLU,
     KC_HYPR, KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_LCBR, KC_RCBR, KC_VOLD,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, PLAYER,
-    XXXXXXX, XXXXXXX, KC_LGUI, KC_LALT, _______, XXXXXXX, XXXXXXX, _______, KC_RCTL, KC_MPRV, KC_MPLY, KC_MNXT
+    _______, XXXXXXX, KC_LGUI, KC_LALT, _______, XXXXXXX, XXXXXXX, _______, KC_RCTL, KC_MPRV, KC_MPLY, KC_MNXT
 ),
 
 /* Raise
@@ -94,14 +94,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
  * | Shift|      | Left | Down |Right | PgDn |      |      | MoLft| MoDwn| MoRgt|       |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
- * |      |      | GUI  | Alt  |LOWER |             |RAISE |      | MSp0 | MSp1 | MSp2  |
+ * | Meh  |      | GUI  | Alt  |LOWER |             |RAISE |      | MSp0 | MSp1 | MSp2  |
  * `------------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_grid(
     XXXXXXX, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
     KC_HYPR, XXXXXXX, KC_HOME, KC_UP,   KC_END,  KC_PGUP, XXXXXXX, KC_GRV,  KC_TILD, XXXXXXX, XXXXXXX, KC_UNDS,
     _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, XXXXXXX, XXXXXXX, MT(KC_MS_LEFT, KC_BTN1), XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, KC_LGUI, KC_LALT, _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    _______, XXXXXXX, KC_LGUI, KC_LALT, _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 /* Qwerty
