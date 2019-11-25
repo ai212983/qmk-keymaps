@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
  * |HprRgt|   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |   "   |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
- * |Shift |   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |       |
+ * |Shift |   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |  F19  |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
  * |      |      |GuiDel|AltBsp|LOWER |    Space    |RAISE |CtlEnt|      |      |       |
  * `------------------------------------------------------------------------------------'
@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_COLEMAK] = LAYOUT_planck_grid(
     KC_TAB,          KC_Q,    KC_W,           KC_F,            KC_P,  KC_G,   KC_J,           KC_L,           KC_U,    KC_Y,    KC_SCLN, KC_BSLS,
     HYPR_T(KC_RGHT), KC_A,    KC_R,           KC_S,            KC_T,  KC_D,   KC_H,           KC_N,           KC_E,    KC_I,    KC_O,    KC_QUOT,
-    KC_LSFT,         KC_Z,    KC_X,           KC_C,            KC_V,  KC_B,   KC_K,           KC_M,           KC_COMM, KC_DOT,  KC_SLSH, XXXXXXX,
+    KC_LSFT,         KC_Z,    KC_X,           KC_C,            KC_V,  KC_B,   KC_K,           KC_M,           KC_COMM, KC_DOT,  KC_SLSH, KC_F19,
     XXXXXXX,         XXXXXXX, LGUI_T(KC_DEL), LALT_T(KC_BSPC), LOWER, KC_SPC, KC_SPC, RAISE,  RCTL_T(KC_ENT), XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Hyper|  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |   {  |   }  | Vol- |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|  F10 |  F11 |  F12 |  F13 |  F14 |  F15 |  F16 |  F17 |   [  |   ]  | Mute |
+ * | Shift|  F10 |  F11 |  F12 |  F13 |  F14 |  F15 |  F16 |  F17 |   [  |   ]  | F20  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      | LGui | Alt  |------|             |RAISE |RCtrl | Prev |Pl/Pau| Next |
  * `-----------------------------------------------------------------------------------'
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT_planck_grid(
     KC_F1,   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, KC_VOLU,
     KC_HYPR, KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,      KC_F9,      KC_LCBR, KC_RCBR, KC_VOLD,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), KC_LBRC, KC_RBRC, KC_MUTE,
+    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), KC_LBRC, KC_RBRC, KC_F20,
     XXXXXXX, XXXXXXX, KC_LGUI, KC_LALT, _______, XXXXXXX, XXXXXXX, _______,    KC_RCTL,    KC_MPRV, KC_MPLY, KC_MNXT
 ),
 
