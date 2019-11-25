@@ -3,6 +3,7 @@
 
 ## Features wishlist
 
+* Launchbar key
 * NKRO enabled (do i really need it?)
 * Plover/Steno layer
 * Home/End keys
