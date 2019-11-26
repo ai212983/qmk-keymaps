@@ -2,11 +2,12 @@
 #include "version.h"
 
 #define _COLEMAK 0 
-#define _LOWER 1
-#define _RAISE 2 
+#define _NUMBRS 1
+#define _BRMDIA 2 
+#define _RUSSIAN 3 
 
-#define LOWER LT(_LOWER, KC_ESC)
-#define RAISE LT(_RAISE, KC_ESC)
+#define NUMBRS LT(_NUMBRS, KC_ESC)
+#define BRMDIA LT(_BRMDIA, KC_ESC)
 
 #define PLAYER  KC_F24
 #define T_LANG  KC_F23
@@ -24,28 +25,27 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* Keymap 0: Basic layer
- *
+
+/* Colemak
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   =    |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   -    |
+ * |   =    |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   -_   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Tab    |   Q  |   W  |   F  |   P  |   G  |      |           |      |   J  |   L  |   U  |   Y  |   :  |   \    |
+ * | Tab    |   Q  |   W  |   F  |   P  |   G  |      |           |      |   J  |   L  |   U  |   Y  |   :  |   \|   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | HprRght|   A  |   R  |   S  |   T  |   D  |------|           |------|   H  |   N  |   E  |   I  |   O  |   '    |
+ * | HprRght|   A  |   R  |   S  |   T  |   D  |------|           |------|   H  |   N  |   E  |   I  |   O  |   "'   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |   ,  |   .  |   /  | Lang   |
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |   ,  |   .  |  /?  |   ~`   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |      |      |      |PrvSpc|NxtSpc|
+ *   | Meh  |      |      |      |NUMBRS|                                       |BRMDIA|      |      |PrvTab|NxtTab|
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |  Gui | LAlt |       | RCtrl|      |
+ *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      | LGui |       |      |      |      |
  *                                 |Delete| Bspc |------|       |------|Space |Enter |
- *                                 |      |      | LOWER|       |RAISE |      |      |
+ *                                 |      |      | LAlt |       | RCtrl|      |      |
  *                                 `--------------------'       `--------------------'
  */
-
 [_COLEMAK] = LAYOUT_ergodox(
   // left hand
   KC_EQL,          KC_1,    KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT,         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,
   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                                                  KC_LGUI, KC_LALT,
-                                                                          KC_TRNS,
+                                                                          XXXXXXX,
                                                          KC_DEL, KC_BSPC, LOWER,
   // right hand
   XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,   KC_0,    KC_MINS,
@@ -67,27 +67,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   RAISE,   KC_SPACE, KC_ENTER
 ),
 
-/* LOWER:
+/* Numbers and navigation
  * ,---------------------------------------------------.           ,--------------------------------------------------.
- * | VERSION |   !  |   @  |   #  |   $  |   %  |      |           |      |   ^  |   &  |   *  |   (  |   )  |  Vol+  |
+ * | VERSION |      |      |      |      |      |      |           |      |      |      |      |      |      |   /    |
  * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
- * |         |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |   {  |   }  |  Vol-  |
+ * |   Tab   |      | Home |  Up  | End  | PgUp |      |           |      |      |   %  |   7  |   8  |   9  |   *    |
  * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |  Hyper  |      |      |      |      |      |------|           |------|      |  F9  |  F10 |   [  |   ]  | Player |
+ * |  Hyper  |      | Left | Down |Right | PgDn |------|           |------|   (  |   )  |   4  |   5  |   6  |   -    |
  * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |  LShift |      |      |      |      |      |      |           |      |      |      |      | Prev |Pl/Pau|  Next  |
+ * |  LShift |      |      |      |      |      |      |           |      |  00  |   0  |   1  |   2  |   3  |   +    |
  * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |       |      |      |      |      |                                       |      |      |      |      |      |
+ *   |  Meh  |      |      |      |------|                                       |      |      |   .  |   ,  | Bsp  |
  *   `-----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | Gui  | LAlt |       | RCtrl|      |
+ *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      | LGui |       |      |      |      |
+ *                                 |      |      |------|       |------|Space |Enter |
+ *                                 |      |      | LAlt |       | RCtrl|      |      |
  *                                 `--------------------'       `--------------------'
  */
-[_LOWER] = LAYOUT_ergodox(
+[_NUMBERS] = LAYOUT_ergodox(
   // left hand
   VRSN,    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, XXXXXXX,
   XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX,
@@ -107,28 +107,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS,
   KC_TRNS, RGB_HUD, RGB_HUI
 ),
-/* Keymap 2: Media and mouse keys
- *
+
+/* Brackets and media
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Hyper  |      | Home |  Up  | End  | PgUp |      |           |      |      |      | MsUp |      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |      |   [  |  ]   |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Shift  |      | Left | Down |Right | PgDn |------|           |------| Lclk |MsLeft|MsDown|MsRght| Rclk |        |
+ * |        |      |      |      |      |      |------|           |------|      |Player|      |   (  |  )   |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |        |      |      |      |      |      |      |           |      | PlPrv|PlyPse|PlNext|   {  |  }   |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   |      |      |      |      |      |                                       |------|      |PrvSpc|NxtSpc|      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | Gui  | LAlt |       | RCtrl|      |
+ *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
  *                                 |      |      |------|       |------|      |      |
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
-[MDIA] = LAYOUT_ergodox(
+[_BRMDIA] = LAYOUT_ergodox(
   // left hand
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -148,6 +148,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS,
   KC_TRNS, KC_TRNS, KC_WBAK
 ),
+
+
+/* Brackets and media
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |   1  |   2  |   3  |   4  |   5  |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |   Й  |   Ц  |   У  |   К  |   Е  |      |           |      |   Н  |   Г  |   Ш  |   Щ  |   З  |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   Ф  |   Ы  |   В  |   А  |   П  |------|           |------|   Р  |   О  |   Л  |   Д  |   Ж  |    Э   |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   Я  |   Ч  |   С  |   М  |   И  |      |           |      |   Т  |   Ь  |   Б  |   Ю  |      |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      | LGui |       |      |      |      |
+ *                                 |Delete| Bspc |------|       |------|Space |Enter |
+ *                                 |      |      | LAlt |       | RCtrl|      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[_RUSSIAN] = LAYOUT_ergodox(
+  // left hand
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN2,
+                                               KC_TRNS, KC_TRNS,
+                                                        KC_TRNS,
+                                      KC_TRNS, KC_TRNS, KC_TRNS,
+  // right hand
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MPLY,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
+                    KC_VOLU, KC_VOLD, KC_MUTE, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS,
+  KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_WBAK
+),
+
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

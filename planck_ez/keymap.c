@@ -13,6 +13,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+/*
+ * Less keypresses with more key travel is better than more keypress with less key travel?
+ * (prv/next tab, \"'~ keys)
+ *
+ * One hand shortcuts are  better than two-hand? (mod + key on same hand vs mod on one and key on another, i.e. brackets on RAISE vs on LOWER)
+ * */ 
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
@@ -23,8 +30,10 @@ enum planck_layers {
   _LOWER,
   _RAISE,
   _QWERTY,
+  _RUSSIAN,
   _PLOVER,
-  _ADJUST
+  _ADJUST,
+  _NONE
 };
 
 enum planck_keycodes {
@@ -32,76 +41,84 @@ enum planck_keycodes {
   QWERTY,
   PLOVER,
   BACKLIT,
-  EXT_PLV
+  EXT_PLV,
+  MY_QUOT,
+  MY_TILD,
+  T_LANG
 };
 
 #define LOWER LT(_LOWER, KC_ESC)
 #define RAISE LT(_RAISE, KC_ESC)
 
+#define RU_IY KC_Q
+
 #define PLAYER  KC_F24
-#define T_LANG  KC_F23
+#define KC_LANG KC_F23
 #define PRV_SPC KC_F22
 #define NXT_SPC KC_F21
+#define PRV_TAB A(G(KC_LEFT))
+#define NXT_TAB A(G(KC_RIGHT))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          
 
 /* Colemak
  * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  |   \  |
+ * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  |  -_  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |HprRgt|   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |   "  |
+ * |HprRgt|   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  \|  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Shift |   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  | Lang |
+ * |Shift |   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |  "'  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Meh  |      |GuiDel|AltBsp|LOWER |    Space    |RAISE |CtlEnt|      |PrvSpc|NxtSpc|
+ * | Meh  | Lang |GuiDel|AltBsp|LOWER |    Space    |RAISE |CtlEnt|PrvTab|NxtTab|  ~`  |
  * `-----------------------------------------------------------------------------------'
  */
 
 [_COLEMAK] = LAYOUT_planck_grid(
-    KC_TAB,          KC_Q,    KC_W,           KC_F,            KC_P,  KC_G,   KC_J,   KC_L,  KC_U,           KC_Y,    KC_SCLN, KC_BSLS,
-    HYPR_T(KC_RGHT), KC_A,    KC_R,           KC_S,            KC_T,  KC_D,   KC_H,   KC_N,  KC_E,           KC_I,    KC_O,    KC_QUOT,
-    KC_LSFT,         KC_Z,    KC_X,           KC_C,            KC_V,  KC_B,   KC_K,   KC_M,  KC_COMM,        KC_DOT,  KC_SLSH, T_LANG,
-    KC_MEH,          XXXXXXX, LGUI_T(KC_DEL), LALT_T(KC_BSPC), LOWER, KC_SPC, KC_SPC, RAISE, RCTL_T(KC_ENT), XXXXXXX, PRV_SPC, NXT_SPC
+    KC_TAB,          KC_Q,    KC_W,           KC_F,            KC_P,  KC_G,   KC_J,   KC_L,  KC_U,           KC_Y,    KC_SCLN, KC_MINS,
+    HYPR_T(KC_RGHT), KC_A,    KC_R,           KC_S,            KC_T,  KC_D,   KC_H,   KC_N,  KC_E,           KC_I,    KC_O,    KC_BSLS,
+    KC_LSFT,         KC_Z,    KC_X,           KC_C,            KC_V,  KC_B,   KC_K,   KC_M,  KC_COMM,        KC_DOT,  KC_SLSH, MY_QUOT,
+    KC_MEH,          T_LANG,  LGUI_T(KC_DEL), LALT_T(KC_BSPC), LOWER, KC_SPC, KC_SPC, RAISE, RCTL_T(KC_ENT), PRV_TAB, NXT_TAB, MY_TILD
 ),
 
 
-// volume makes no sense with hardware sound card
-/* Lower
+// NOTE - mod keys with arrows are virtually inaccessible, maybe add some mod keys for the right hand
+/* Lower, lockable 
  * ,-----------------------------------------------------------------------------------.
- * |  F1  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Vol+ |
+ * | Tab  |      | Home |  Up  | End  | PgUp |      |   %  |   7  |   8  |   9  |  /   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Hyper|  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |   {  |   }  | Vol- |
+ * |Hyper |      | Left | Down |Right | PgDn |   (  |   )  |   4  |   5  |   6  |  *   |
+ * |------+------+------+------+------+------+------+------+------+------+-*----+------|
+ * |Shift |      |      |      |      |      |      |   0  |   1  |   2  |   3  |  -   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Shift |      |      |      |      |      |      |      |      |   [  |   ]  | Plyr |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Meh  |      | LGui | Alt  |------|             |RAISE |RCtrl | Prev |Pl/Pau| Next |
+ * | Meh  |      | LGui | LAlt |██████|    Space    |RAISE |CtlEnt|   .  | Bspc |  +   |
  * `-----------------------------------------------------------------------------------'
  */
 
 [_LOWER] = LAYOUT_planck_grid(
-    KC_F1,   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_VOLU,
-    KC_HYPR, KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_LCBR, KC_RCBR, KC_VOLD,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, PLAYER,
-    _______, XXXXXXX, KC_LGUI, KC_LALT, _______, XXXXXXX, XXXXXXX, _______, KC_RCTL, KC_MPRV, KC_MPLY, KC_MNXT
+    KC_TAB,  XXXXXXX, KC_HOME, KC_UP,   KC_END,  KC_PGUP, XXXXXXX, KC_PERC, KC_7,           KC_8,    KC_9,    KC_SLSH,
+    KC_HYPR, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_LPRN, KC_RPRN, KC_4,           KC_5,    KC_6,    KC_ASTR, 
+    KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_MEH,  XXXXXXX, KC_LGUI, KC_LALT, _______, KC_SPC,  KC_SPC,  _______, RCTL_T(KC_ENT), KC_DOT,  KC_BSPC, KC_PLUS
 ),
 
-/* Raise
+// volume makes no sense with hardware sound card
+/* Raise - F keys, brackets 
  * ,------------------------------------------------------------------------------------.
- * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |   -   |
+ * |      |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   [  |   ]  |       |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
- * | Hyper|      | Left |  Up  |Right | PgUp |      |   `  |  ~   | MoUp |      |   _   |
+ * | Hyper|  F1  |  F2  |  F3  |  F4  |  F5  |      |Player|      |   (  |   )  |       |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
- * | Shift|      | Home | Down | End  | PgDn |      |      | MoLft| MoDwn| MoRgt|       |
+ * | Shift|  F6  |  F7  |  F8  |  F9  |  F10 | PlPrv|PlyPse|PlNxt |   {  |   }  |       |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
- * | Meh  |      | GUI  | Alt  |LOWER |             |RAISE |      | MSp0 | MSp1 | MSp2  |
+ * | Meh  |      | LGui | LAlt |LOWER |             |██████|RCtrl |PrvSpc|NxtSpc|       |
  * `------------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_grid(
-    XXXXXXX, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-    KC_HYPR, XXXXXXX, KC_LEFT, KC_UP,   KC_RGHT, KC_PGUP, XXXXXXX, KC_GRV,  KC_TILD, XXXXXXX, XXXXXXX, KC_UNDS,
-    _______, XXXXXXX, KC_HOME, KC_DOWN, KC_END,  KC_PGDN, XXXXXXX, XXXXXXX, MT(KC_MS_LEFT, KC_BTN1), XXXXXXX, XXXXXXX, XXXXXXX,
-    _______, XXXXXXX, KC_LGUI, KC_LALT, _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LBRC, KC_RBRC, XXXXXXX,
+    KC_HYPR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, PLAYER,  XXXXXXX, KC_LPRN, KC_RPRN, XXXXXXX,
+    KC_LSFT, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_MPRV, KC_MPLY, KC_MNXT, KC_LCBR, KC_RCBR, XXXXXXX,
+    KC_MEH,  XXXXXXX, KC_LGUI, KC_LALT, _______, XXXXXXX, XXXXXXX, _______, KC_RCTL, PRV_SPC, NXT_SPC, XXXXXXX
 ),
 
 /* Qwerty
@@ -122,6 +139,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
+/* Russian
+ * ,-----------------------------------------------------------------------------------.
+ * | Tab  |   Й  |   Ц  |   У  |   К  |   Е  |   Н  |   Г  |   Ш  |   Щ  |   З  |  -_  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Esc  |   Ф  |   Ы  |   В  |   А  |   П  |   Р  |   О  |   Л  |   Д  |   Ж  |  Э   |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Shift|   Я  |   Ч  |   С  |   М  |   И  |   Т  |   Ь  |   Б  |   Ю  |  .,  |  "'  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Meh  |   Ë  |GuiDel|AltBsp|LOWER |    Space    |RAISE |CtlEnt|PrvTab|NxtTab|  \/  |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_RUSSIAN] = LAYOUT_planck_grid(
+    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+    KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
+    BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+),
+
 /* Plover layer (http://opensteno.org)
  * ,-----------------------------------------------------------------------------------.
  * |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |
@@ -134,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_PLOVER] = LAYOUT_planck_grid(
-    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1   ,
+    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,
     XXXXXXX, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
     XXXXXXX, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     EXT_PLV, XXXXXXX, XXXXXXX, KC_C,    KC_V,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    XXXXXXX, XXXXXXX, XXXXXXX
@@ -171,18 +206,96 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
+void press_key_with_level_mods(uint16_t key) {
+  const uint8_t interesting_mods = MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT) | MOD_BIT(KC_RALT);
+
+  // Save the state
+  const uint8_t real_mods = get_mods();
+  const uint8_t weak_mods = get_weak_mods();
+  const uint8_t macro_mods = get_macro_mods();
+
+  uint8_t target_mods = (key >> 8) & (QK_MODS_MAX >> 8);
+  // The 5th bit indicates that it's a right hand mod,
+  // which needs some fixup
+  if (target_mods & 0x10) {
+    target_mods &= 0xF;
+    target_mods <<= 4;
+  }
+
+  // Clear the mods that we are potentially going to modify,
+  del_mods(interesting_mods);
+  del_weak_mods(interesting_mods);
+  del_macro_mods(interesting_mods);
+
+  // Enable the mods that we need
+  add_mods(target_mods & interesting_mods);
+
+  // Press and release the key
+  register_code(key & 0xFF);
+  unregister_code(key & 0xFF);
+
+  // Restore the previous state
+  set_mods(real_mods);
+  set_weak_mods(weak_mods);
+  set_macro_mods(macro_mods);
+  send_keyboard_report();
+}
+
+void override_key(keyrecord_t* record, uint16_t normal, uint16_t shifted) {
+  const uint8_t shift = MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT);
+  bool shift_pressed = keyboard_report->mods & shift;
+  const uint16_t target = shift_pressed ? shifted : normal;
+  uint8_t keycode = target & 0xFF;
+  if (keycode == KC_NO) {
+    return;
+  }
+  press_key_with_level_mods(target);
+}
+
+uint16_t stored_layer = _NONE;
+
+void set_persistent_layer(uint16_t layer) {
+    stored_layer = layer;
+    set_single_persistent_default_layer(layer);
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case MY_TILD:
+        if (record->event.pressed) {
+            override_key(record, KC_TILD, KC_GRV);
+        }
+        return false;
+        break;
+    case MY_QUOT:
+        if (record->event.pressed) {
+          override_key(record, KC_DQUO, KC_QUOT);
+        }
+        return false;
+        break;
+    /*    
+    case T_LANG:
+        if (record->event.pressed) {
+          register_code(KC_LANG);
+          if (stored_layer == _RUSSIAN) {
+            set_persistent_layer(stored_layer);
+          } else {
+            set_persistent_layer(_RUSSIAN);
+          }
+          unregister_code(KC_LANG);
+        }
+        return false;
+        break;
+   */ 
     case QWERTY:
       if (record->event.pressed) {
-        print("mode just switched to qwerty and this is a huge string\n");
-        set_single_persistent_default_layer(_QWERTY);
+        set_persistent_layer(_QWERTY);
       }
       return false;
       break;
     case COLEMAK:
       if (record->event.pressed) {
-        set_single_persistent_default_layer(_COLEMAK);
+        set_persistent_layer(_COLEMAK);
       }
       return false;
       break;
