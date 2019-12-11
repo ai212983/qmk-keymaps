@@ -43,13 +43,12 @@ bool process_russian_override(uint16_t keycode, keyrecord_t *record) {
           override_key(record, KC_DOT, KC_COMM);
         }
         return false;
-        break;
+
     case RU_SLSH:
         if (record->event.pressed) {
           override_key(record, KC_SLSH, KC_BSLS);
         }
         return false;
-        break;
         
     case T_LANG:
         if (record->event.pressed) {
@@ -63,7 +62,7 @@ bool process_russian_override(uint16_t keycode, keyrecord_t *record) {
             unregister_code(KC_LANG);
         }
         return false;
-        break;
+
   }
   return true;
 }

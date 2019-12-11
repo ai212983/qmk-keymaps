@@ -1,6 +1,5 @@
 #pragma once
-#include "keycodes.h"
-#include "layers.h"
+#include "common.h"
 #include "shift_override.h"
 
 extern const uint32_t PROGMEM unicode_map[];

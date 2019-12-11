@@ -1,29 +1,17 @@
-#include QMK_KEYBOARD_H
-#include "version.h"
+#include "common.h"
+#include "russian.h"
+#include "shift_override.h"
 
-#define _COLEMAK 0 
-#define _NUMBRS 1
-#define _BRMDIA 2 
-#define _RUSSIAN 3 
+extern keymap_config_t keymap_config;
 
-#define NUMBRS LT(_NUMBRS, KC_ESC)
-#define BRMDIA LT(_BRMDIA, KC_ESC)
-
-#define PLAYER  KC_F24
-#define T_LANG  KC_F23
-#define PRV_SPC KC_F22
-#define NXT_SPC KC_F21
-
-enum custom_keycodes {
-#ifdef ORYX_CONFIGURATOR
-  EPRM = EZ_SAFE_RANGE,
-#else
-  EPRM = SAFE_RANGE,
-#endif
-  VRSN,
-  RGB_SLD
+enum ergodox_keycodes {
+  RGB_SLD = RUSSIAN_SAFE_RANGE,
+  EPRM
 };
-
+/* ⌘ - GUI, ^ - Ctrl, ⌥ - Alt, ⇧ - Shift
+ * Hyper - Ctrl + Shift + Alt + Gui
+ * Meh - Ctrl + Shift + Alt
+ */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Colemak
@@ -36,171 +24,176 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |   ,  |   .  |  /?  |   ~`   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | Meh  |      |      |      |NUMBRS|                                       |BRMDIA|      |      |PrvTab|NxtTab|
+ *   | Meh  | Lang |      |      |      |                                       |      |      |PrvTab|NxtTab|      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      | LGui |       |      |      |      |
- *                                 |Delete| Bspc |------|       |------|Space |Enter |
- *                                 |      |      | LAlt |       | RCtrl|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 | ⌘/Del| ^/Bsp|------|       |------|Space |⌥/Ent |
+ *                                 |      |      | LOWER|       |RAISE |      |      |
  *                                 `--------------------'       `--------------------'
  */
 [_COLEMAK] = LAYOUT_ergodox(
   // left hand
-  KC_EQL,          KC_1,    KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
-  KC_TAB,          KC_Q,    KC_W,    KC_F,    KC_P,    KC_G, XXXXXXX,
-  HYPR_T(KC_RGHT), KC_A,    KC_R,    KC_S,    KC_T,    KC_D,
-  KC_LSFT,         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,
-  XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                                                 KC_LGUI, KC_LALT,
-                                                                          XXXXXXX,
-                                                         KC_DEL, KC_BSPC, LOWER,
+  KC_EQL,          KC_1,   KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
+  KC_TAB,          KC_Q,   KC_W,    KC_F,    KC_P,    KC_G, XXXXXXX,
+  HYPR_T(KC_RGHT), KC_A,   KC_R,    KC_S,    KC_T,    KC_D,
+  KC_LSFT,         KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,
+  KC_MEH,          T_LANG, XXXXXXX, XXXXXXX, XXXXXXX,
+                                                   XXXXXXX, XXXXXXX,
+                                                            XXXXXXX,
+                           LGUI_T(KC_DEL), LCTL_T(KC_BSPC), LOWER,
   // right hand
-  XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,   KC_0,    KC_MINS,
-  XXXXXXX, KC_J,    KC_L,    KC_U,    KC_Y,   KC_SCLN, KC_BSLS,
-           KC_H,    KC_N,    KC_E,    KC_I,   KC_O,    KC_QUOT,
-  XXXXXXX, KC_K,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, T_LANG,
-  XXXXXXX, XXXXXXX, XXXXXXX, PRV_SPC, NXT_SPC,
-  KC_RCTL, XXXXXXX,
+  XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
+  XXXXXXX, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSLS,
+           KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
+  XXXXXXX, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, T_LANG,
+                    XXXXXXX, XXXXXXX, PRV_TAB, NXT_TAB, XXXXXXX,
+  XXXXXXX, XXXXXXX,
   XXXXXXX,
-  RAISE,   KC_SPACE, KC_ENTER
+  RAISE,   KC_SPACE, RALT_T(KC_ENT)
 ),
 
-/* Numbers and navigation
- * ,---------------------------------------------------.           ,--------------------------------------------------.
- * | VERSION |      |      |      |      |      |      |           |      |      |      |      |      |      |   /    |
- * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
- * |   Tab   |      | Home |  Up  | End  | PgUp |      |           |      |      |   %  |   7  |   8  |   9  |   *    |
- * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |  Hyper  |      | Left | Down |Right | PgDn |------|           |------|   (  |   )  |   4  |   5  |   6  |   -    |
- * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |  LShift |      |      |      |      |      |      |           |      |  00  |   0  |   1  |   2  |   3  |   +    |
- * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |  Meh  |      |      |      |------|                                       |      |      |   .  |   ,  | Bsp  |
- *   `-----------------------------------'                                       `----------------------------------'
+/* Lower, lockable - navigation and numpad
+ * Mod keys on thumb cluster are meant for locked layer
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |   /    |
+ * |--------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
+ * |   =    |  +   | Home |  Up  | End  | PgUp |      |           |      |      |   %  |   7  |   8  |   9  |   *    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * | Hyper  |      | Left | Down |Right | PgDn |------|           |------|   (  |   )  |   4  |   5  |   6  |   -    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * | LShift |      |      |      |      |      |      |           |      |      |   0  |   1  |   2  |   3  |   +    |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   | Meh  |^(Ctl)|⌘/Del |      |      |                                       |      |      |   .  |   ,  | Bsp  |
+ *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      | LGui |       |      |      |      |
- *                                 |      |      |------|       |------|Space |Enter |
- *                                 |      |      | LAlt |       | RCtrl|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 | ⌘/Del| ^/Bsp|------|       |------|Space |⌥/Ent |
+ *                                 |      |      |██████|       | RAISE|      |      |
  *                                 `--------------------'       `--------------------'
  */
-[_NUMBERS] = LAYOUT_ergodox(
+[_LOWER] = LAYOUT_ergodox(
   // left hand
-  VRSN,    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, XXXXXXX,
-  XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_HYPR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXX,
-                                               _______, _______,
-                                                        XXXXXXX,
-                                      XXXXXXX, XXXXXXX, _______,
+  XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_EQL,  KC_PLUS, KC_HOME,          KC_UP,  KC_END, KC_PGUP, XXXXXXX,
+  KC_HYPR, XXXXXXX, KC_LEFT,        KC_DOWN, KC_RGHT, KC_PGDN,
+  _______, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  _______, KC_LCTL, LGUI_T(KC_DEL), XXXXXXX, XXXXXXX,
+                                                      XXXXXXX, XXXXXXX,
+                                                               XXXXXXX,
+                                             _______, _______, _______,
   // right hand
-  XXXXXXX, KC_CIRC, KC_AMPR, KC_ASTR,   KC_LPRN,   KC_RPRN,  KC_VOLU,
-  XXXXXXX, KC_F6,   KC_F7,   KC_F8,    KC_LCBR,    KC_RCBR, KC_VOLD,
-  KC_DOWN, KC_4,    KC_5,    KC_LBRC,    KC_RBRC, PLAYER,
-  KC_TRNS, KC_AMPR, KC_1,    KC_2,    KC_3,    KC_BSLS, KC_TRNS,
-  KC_TRNS, KC_DOT,  KC_0,    KC_EQL,  KC_TRNS,
-  RGB_TOG, RGB_SLD,
-  KC_TRNS,
-  KC_TRNS, RGB_HUD, RGB_HUI
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLSH,
+  XXXXXXX, XXXXXXX, KC_PERC, KC_7,    KC_8,    KC_9,    KC_ASTR,
+           KC_LPRN, KC_RPRN, KC_4,    KC_5,    KC_6,    KC_MINS,
+  XXXXXXX, XXXXXXX, KC_0,    KC_1,    KC_2,    KC_3,    KC_PLUS,
+                    XXXXXXX, XXXXXXX, KC_DOT,  KC_COMM, KC_BSPC,
+  XXXXXXX, XXXXXXX,
+  XXXXXXX,
+  _______, _______, _______
 ),
 
-/* Brackets and media
+/* Raise - F keys, brackets
+ * Shifting left mod key to be reachable
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      | RGB  |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |   !  |   @  |   #  |   $  |   %  |      |           |      |  ^   |  &   |  *   |   [  |  ]   |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * | Hyper  |  F1  |  F2  |  F3  |  F4  |  F5  |------|           |------|      |Player|      |   (  |  )   |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * | LShift |  F6  |  F7  |  F8  |  F9  |  F10 |      |           |      | PlPrv|PlyPse|PlNext|   {  |  }   |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   | Meh  |      |      |      |      |                                       |⌥(Alt)|      |PrvSpc|NxtSpc|      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 | ⌘/Del| ^/Bsp|------|       |------|      |      |
+ *                                 |      |      |LOWER |       |██████|      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[_RAISE] = LAYOUT_ergodox(
+  // left hand
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_SLD, XXXXXXX,
+  XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, XXXXXXX,
+  KC_HYPR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,
+  _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                               XXXXXXX, XXXXXXX,
+                                                        XXXXXXX,
+                                      _______, _______, _______,
+  // right hand
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_CIRC, KC_AMPR, KC_ASTR, KC_LBRC, KC_RBRC, XXXXXXX,
+           XXXXXXX, PLAYER,  XXXXXXX, KC_LPRN, KC_RPRN, XXXXXXX,
+  XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_LCBR, KC_RCBR, XXXXXXX,
+                    KC_RALT, XXXXXXX, PRV_SPC, NXT_SPC, XXXXXXX,
+  XXXXXXX, XXXXXXX,
+  XXXXXXX,
+  _______, XXXXXXX, XXXXXXX
+),
+
+
+/* Russian
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |   [  |  ]   |        |
+ * |  Tab   |   Й  |   Ц  |   У  |   К  |   Е  |      |           |      |  Н   |  Г   |  Ш   |  Щ   |  З   |   -_   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |------|           |------|      |Player|      |   (  |  )   |        |
+ * |  Right |   Ф  |   Ы  |   В  |   А  |   П  |------|           |------|  Р   |  О   |  Л   |  Д   |  Ж   |   Э    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      | PlPrv|PlyPse|PlNext|   {  |  }   |        |
+ * | LShift |   Я  |   Ч  |   С  |   М  |   И  |      |           |      |  Т   |  Ь   |  Б   |  Ю   |  .,  |   "'   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |------|      |PrvSpc|NxtSpc|      |
+ *   |   Ë  | Lang |      |      |      |                                       |      |      |PrvTab|NxtTab|  \/  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
- */
-[_BRMDIA] = LAYOUT_ergodox(
-  // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN2,
-                                               KC_TRNS, KC_TRNS,
-                                                        KC_TRNS,
-                                      KC_TRNS, KC_TRNS, KC_TRNS,
-  // right hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MPLY,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
-                    KC_VOLU, KC_VOLD, KC_MUTE, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS,
-  KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_WBAK
-),
-
-
-/* Brackets and media
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |   1  |   2  |   3  |   4  |   5  |      |           |      |      |      |      |      |      |        |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   Й  |   Ц  |   У  |   К  |   Е  |      |           |      |   Н  |   Г  |   Ш  |   Щ  |   З  |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   Ф  |   Ы  |   В  |   А  |   П  |------|           |------|   Р  |   О  |   Л  |   Д  |   Ж  |    Э   |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   Я  |   Ч  |   С  |   М  |   И  |      |           |      |   Т  |   Ь  |   Б  |   Ю  |      |        |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |      |      |      |      |      |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      | LGui |       |      |      |      |
- *                                 |Delete| Bspc |------|       |------|Space |Enter |
- *                                 |      |      | LAlt |       | RCtrl|      |      |
+ *                                 | ⌘/Del| ^/Bsp|------|       |------|Space |⌥/Ent |
+ *                                 |      |      | LOWER|       |RAISE |      |      |
  *                                 `--------------------'       `--------------------'
  */
 [_RUSSIAN] = LAYOUT_ergodox(
   // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN2,
-                                               KC_TRNS, KC_TRNS,
-                                                        KC_TRNS,
-                                      KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_EQL,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_TAB,  RU_IY,   RU_C,    RU_U,    RU_K,    RU_E,    XXXXXXX,
+  KC_RGHT, RU_F,    RU_Y,    RU_V,    RU_A,    RU_P,
+  KC_LSFT, RU_YA,   RU_CH,   RU_S,    RU_M,    RU_I,    XXXXXXX,
+  RU_YO,   T_LANG,  XXXXXXX, XXXXXXX, XXXXXXX,
+                                           XXXXXXX, XXXXXXX,
+                                                    XXXXXXX,
+                     LGUI_T(KC_DEL), LCTL_T(KC_BSPC), LOWER,
   // right hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MPLY,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
-                    KC_VOLU, KC_VOLD, KC_MUTE, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS,
-  KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_WBAK
-),
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, RU_N,    RU_G,    RU_SH,   RU_SC,   RU_Z,    KC_MINS,
+           RU_P,    RU_O,    RU_L,    RU_D,    RU_ZH,   RU_AE,
+  XXXXXXX, RU_T,    RU_SS,   RU_B,    RU_YU,   RU_DOT,  MY_QUOT,
+                    XXXXXXX, XXXXXXX, PRV_TAB, NXT_TAB, RU_SLSH,
+  XXXXXXX, XXXXXXX,
+  XXXXXXX,
+  RAISE,   KC_SPACE, RALT_T(KC_ENT)
+)
 
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+  if (!process_shift_override(keycode, record) ||
+        !process_russian_override(keycode, record) ||
+        !process_common_override(keycode, record))
+        return true;
+
   if (record->event.pressed) {
     switch (keycode) {
       case EPRM:
         eeconfig_init();
-        return false;
-      case VRSN:
-        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
         return false;
       #ifdef RGBLIGHT_ENABLE
       case RGB_SLD:
