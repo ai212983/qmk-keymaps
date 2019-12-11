@@ -15,10 +15,10 @@ enum common_keycodes {
 
 enum common_layers {
     _COLEMAK,
-    _LOWER,
-    _RAISE,
     _QWERTY,
     _RUSSIAN,
+    _LOWER,
+    _RAISE,
     _PLOVER,
     _COMMON_LAYERS
 };
