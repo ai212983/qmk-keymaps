@@ -1,3 +1,3 @@
-SRC += shift_override.c \
-       russian.c \
-       layers.c
+SRC += common.c \
+       shift_override.c \
+       russian.c

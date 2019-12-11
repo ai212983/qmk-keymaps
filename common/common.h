@@ -9,7 +9,18 @@ enum common_keycodes {
   MY_QUOT,
   MY_TILD,
   T_LANG,
+  KC_VRSN,
   COMMON_SAFE_RANGE
+};
+
+enum common_layers {
+    _COLEMAK,
+    _LOWER,
+    _RAISE,
+    _QWERTY,
+    _RUSSIAN,
+    _PLOVER,
+    _COMMON_LAYERS
 };
 
 #define LOWER LT(_LOWER, KC_ESC)
@@ -21,3 +32,8 @@ enum common_keycodes {
 #define NXT_SPC KC_F21
 #define PRV_TAB A(G(KC_LEFT))
 #define NXT_TAB A(G(KC_RIGHT))
+
+bool process_common_override(uint16_t keycode, keyrecord_t *record);
+void set_persistent_layer(uint16_t layer);
+uint16_t get_active_layer(void);
+void set_prev_layer(void);

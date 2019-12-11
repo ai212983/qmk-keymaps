@@ -1,2 +1,9 @@
+# intellij folder
+.idea/
+
+# generated images 
 *.bin
+*.hex
+
+# user folder in qmk_firmware
 ai212983/
