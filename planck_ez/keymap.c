@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Colemak
  * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  |  -_  |
+ * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |HprRgt|   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  \|  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_COLEMAK] = LAYOUT_planck_grid(
-    KC_TAB,          KC_Q,    KC_W,           KC_F,            KC_P,  KC_G,   KC_J,   KC_L,  KC_U,           KC_Y,    KC_SCLN, KC_MINS,
+    KC_TAB,          KC_Q,    KC_W,           KC_F,            KC_P,  KC_G,   KC_J,   KC_L,  KC_U,           KC_Y,    KC_SCLN, XXXXXXX,
     HYPR_T(KC_RGHT), KC_A,    KC_R,           KC_S,            KC_T,  KC_D,   KC_H,   KC_N,  KC_E,           KC_I,    KC_O,    KC_BSLS,
     KC_LSFT,         KC_Z,    KC_X,           KC_C,            KC_V,  KC_B,   KC_K,   KC_M,  KC_COMM,        KC_DOT,  KC_SLSH, MY_QUOT,
     KC_MEH,          T_LANG,  LCTL_T(KC_DEL), LGUI_T(KC_BSPC), LOWER, KC_SPC, KC_SPC, RAISE, RALT_T(KC_ENT), PRV_TAB, NXT_TAB, MY_TILD
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Hyper |      | Left | Down |Right | PgDn |   (  |   )  |   4  |   5  |   6  |  *   |
  * |------+------+------+------+------+------+------+------+------+------+-*----+------|
- * |Shift |      |      |      |      |      |      |   0  |   1  |   2  |   3  |  -   |
+ * |Shift |      |      |      |   _  |   =  |      |   0  |   1  |   2  |   3  |  -   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Meh  |⌘(Gui)|^/Del | Bsp  |██████|    Space    |RAISE |⌥/Ent |   .  | Bspc |  +   |
  * `-----------------------------------------------------------------------------------'
