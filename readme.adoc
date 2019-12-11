@@ -3,12 +3,12 @@
 Layouts in this repo are work in progress and most likely will be tweaked in next few months
 (beginning of 2020).
 
-There are ErgoDox EZ and Planck EZ layouts, sharing some code and layouts was made
-to be as close to each other as possible.
+There are ErgoDox EZ and Planck EZ layouts, sharing some code.
+These layouts was made to be as close to each other as possible.
 
-Both are using Mac OS X Unicode Hex Input for Cyrillic.
+Both layouts are using Mac OS X Unicode Hex Input for Cyrillic.
 
-For flashing https://ergodox-ez.com/pages/wally[`wally`] is used.
+https://ergodox-ez.com/pages/wally[`Wally`] is used for flashing.
 
 
 == Backlog
