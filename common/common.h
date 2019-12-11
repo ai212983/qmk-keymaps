@@ -28,8 +28,9 @@ enum common_layers {
 
 #define PLAYER  KC_F24
 #define KC_LANG KC_F23
-#define PRV_SPC KC_F22
-#define NXT_SPC KC_F21
+#define MSN_CTL KC_F17
+#define PRV_SPC KC_F18
+#define NXT_SPC KC_F19
 #define PRV_TAB A(G(KC_LEFT))
 #define NXT_TAB A(G(KC_RIGHT))
 

@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Shift |   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |  /?  |  "'  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Meh  | Lang | ⌘/Del| ^/Bsp|LOWER |    Space    |RAISE |⌥/Ent |PrvTab|NxtTab|  ~`  |
+ * | Meh  | Lang | ^/Del| ⌘/Bsp|LOWER |    Space    |RAISE |⌥/Ent |PrvTab|NxtTab|  ~`  |
  * `-----------------------------------------------------------------------------------'
  */
 
@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,          KC_Q,    KC_W,           KC_F,            KC_P,  KC_G,   KC_J,   KC_L,  KC_U,           KC_Y,    KC_SCLN, KC_MINS,
     HYPR_T(KC_RGHT), KC_A,    KC_R,           KC_S,            KC_T,  KC_D,   KC_H,   KC_N,  KC_E,           KC_I,    KC_O,    KC_BSLS,
     KC_LSFT,         KC_Z,    KC_X,           KC_C,            KC_V,  KC_B,   KC_K,   KC_M,  KC_COMM,        KC_DOT,  KC_SLSH, MY_QUOT,
-    KC_MEH,          T_LANG,  LGUI_T(KC_DEL), LCTL_T(KC_BSPC), LOWER, KC_SPC, KC_SPC, RAISE, RALT_T(KC_ENT), PRV_TAB, NXT_TAB, MY_TILD
+    KC_MEH,          T_LANG,  LCTL_T(KC_DEL), LGUI_T(KC_BSPC), LOWER, KC_SPC, KC_SPC, RAISE, RALT_T(KC_ENT), PRV_TAB, NXT_TAB, MY_TILD
 ),
 
 /* Russian
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+-*----+------|
  * |Shift |      |      |      |      |      |      |   0  |   1  |   2  |   3  |  -   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Meh  | LCtl |⌘/Del | Bsp  |██████|    Space    |RAISE |⌥/Ent |   .  | Bspc |  +   |
+ * | Meh  |⌘(Gui)|^/Del | Bsp  |██████|    Space    |RAISE |⌥/Ent |   .  | Bspc |  +   |
  * `-----------------------------------------------------------------------------------'
  * Ctrl is shifted for better reachability by pinky
  */
@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_EQL,  KC_PLUS, KC_HOME,        KC_UP,   KC_END,  KC_PGUP, XXXXXXX, KC_PERC, KC_7,    KC_8,    KC_9,   KC_SLSH,
     KC_HYPR, XXXXXXX, KC_LEFT,        KC_DOWN, KC_RGHT, KC_PGDN, KC_LPRN, KC_RPRN, KC_4,    KC_5,    KC_6,   KC_ASTR,
     _______, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_0,    KC_1,    KC_2,    KC_3,   KC_MINS,
-    _______, KC_LCTL, LGUI_T(KC_DEL), KC_BSPC, _______, _______, _______, _______, _______, KC_DOT, KC_BSPC, KC_PLUS
+    _______, KC_LGUI, LCTL_T(KC_DEL), KC_BSPC, _______, _______, _______, _______, _______, KC_DOT, KC_BSPC, KC_PLUS
 ),
 
 /* Raise - F keys, brackets
@@ -125,14 +125,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
  * | Shift|  F6  |  F7  |  F8  |  F9  |  F10 | PlPrv|PlyPse|PlNxt |   {  |  }   |       |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
- * | Meh  |      |⌘(Gui)|^(Ctl)|LOWER |             |██████|⌥(Alt)|PrvSpc|NxtSpc|       |
+ * | Meh  |      |^(Ctl)|⌘(Gui)|LOWER |             |██████|⌥(Alt)|PrvSpc|NxtSpc|MsnCtl |
  * `------------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_grid(
     XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LBRC, KC_RBRC, XXXXXXX,
     KC_HYPR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, PLAYER,  XXXXXXX, KC_LPRN, KC_RPRN, XXXXXXX,
     _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_MPRV, KC_MPLY, KC_MNXT, KC_LCBR, KC_RCBR, XXXXXXX,
-    _______, XXXXXXX, KC_LGUI, KC_LCTL, _______, XXXXXXX, XXXXXXX, _______, KC_RALT, PRV_SPC, NXT_SPC, XXXXXXX
+    _______, XXXXXXX, KC_LCTL, KC_LGUI, _______, XXXXXXX, XXXXXXX, _______, KC_RALT, PRV_SPC, NXT_SPC, MSN_CTL
 ),
 
 /* Plover layer (http://opensteno.org)
