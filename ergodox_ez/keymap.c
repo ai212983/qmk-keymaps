@@ -173,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // right hand
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, RU_N,    RU_G,    RU_SH,   RU_SC,   RU_Z,    KC_MINS,
-           RU_P,    RU_O,    RU_L,    RU_D,    RU_ZH,   RU_AE,
+           RU_R,    RU_O,    RU_L,    RU_D,    RU_ZH,   RU_AE,
   XXXXXXX, RU_T,    RU_SS,   RU_B,    RU_YU,   RU_DOT,  MY_QUOT,
                     XXXXXXX, XXXXXXX, PRV_TAB, NXT_TAB, RU_SLSH,
   XXXXXXX, XXXXXXX,
