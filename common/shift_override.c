@@ -1,6 +1,6 @@
 #include "shift_override.h"
 
-void press_key_with_level_mods(uint16_t key) {
+void handle_key_with_level_mods(uint16_t key, bool is_pressed) {
   const uint8_t interesting_mods = MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT) | MOD_BIT(KC_RALT);
 
   // Save the state
@@ -23,15 +23,18 @@ void press_key_with_level_mods(uint16_t key) {
 
   // Enable the mods that we need
   add_mods(target_mods & interesting_mods);
-
-  // Press and release the key
-  register_code(key & 0xFF);
-  unregister_code(key & 0xFF);
+  if (is_pressed) {
+      unregister_code16(key & 0xFF); // ErgoDox EZ won't work without this
+      register_code16(key & 0xFF);
+  } else {
+      unregister_code16(key & 0xFF);
+  }
 
   // Restore the previous state
   set_mods(real_mods);
   set_weak_mods(weak_mods);
   set_macro_mods(macro_mods);
+
   send_keyboard_report();
 }
 
@@ -43,23 +46,17 @@ void override_key(keyrecord_t* record, uint16_t normal, uint16_t shifted) {
   if (keycode == KC_NO) {
     return;
   }
-  press_key_with_level_mods(target);
+  handle_key_with_level_mods(target, record->event.pressed);
 }
 
 bool process_shift_override(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case MY_TILD:
-        if (record->event.pressed) {
-            override_key(record, KC_TILD, KC_GRV);
-        }
+        override_key(record, KC_TILD, KC_GRV);
         return false;
-        break;
     case MY_QUOT:
-        if (record->event.pressed) {
-          override_key(record, KC_DQUO, KC_QUOT);
-        }
+        override_key(record, KC_DQUO, KC_QUOT);
         return false;
-        break;
   }
   return true;
 }
