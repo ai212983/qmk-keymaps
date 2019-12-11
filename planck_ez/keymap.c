@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RUSSIAN] = LAYOUT_planck_grid(
     KC_TAB,  RU_IY,  RU_C,   RU_U,    RU_K,  RU_E,   RU_N,   RU_G,    RU_SH,  RU_SC,   RU_Z,    KC_MINS,
-    KC_RGHT, RU_F,   RU_Y,   RU_V,    RU_A,  RU_P,   RU_P,   RU_O,    RU_L,   RU_D,    RU_ZH,   RU_AE,
+    KC_RGHT, RU_F,   RU_Y,   RU_V,    RU_A,  RU_P,   RU_R,   RU_O,    RU_L,   RU_D,    RU_ZH,   RU_AE,
     KC_LSFT, RU_YA,  RU_CH,  RU_S,    RU_M,  RU_I,   RU_T,   RU_SS,   RU_B,   RU_YU,   RU_DOT,  MY_QUOT,
     RU_YO,   T_LANG, KC_DEL, KC_BSPC, LOWER, KC_SPC, KC_SPC, RAISE,   KC_ENT, PRV_TAB, NXT_TAB, RU_SLSH
 ),
