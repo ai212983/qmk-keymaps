@@ -16,7 +16,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Colemak
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   =    |   1  |   2  |   3  |   4  |   5  |      |           |MsnCtl|   6  |   7  |   8  |   9  |   0  |   -_   |
+ * |        |   1  |   2  |   3  |   4  |   5  |      |           |MsnCtl|   6  |   7  |   8  |   9  |   0  |   -_   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  |   F  |   P  |   G  |PrvSpc|           |NxtSpc|   J  |   L  |   U  |   Y  |   :  |   \|   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_COLEMAK] = LAYOUT_ergodox(
   // left hand
-  KC_EQL,          KC_1,   KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
+  XXXXXXX,         KC_1,   KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
   KC_TAB,          KC_Q,   KC_W,    KC_F,    KC_P,    KC_G, PRV_SPC,
   HYPR_T(KC_RGHT), KC_A,   KC_R,    KC_S,    KC_T,    KC_D,
   KC_LSFT,         KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   MSN_CTL, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
   NXT_SPC, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSLS,
            KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    MY_QUOT,
-  XXXXXXX, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, T_LANG,
+  XXXXXXX, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MY_TILD,
                     XXXXXXX, XXXXXXX, PRV_TAB, NXT_TAB, XXXXXXX,
   XXXXXXX, XXXXXXX,
   XXXXXXX,
@@ -60,11 +60,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |   /    |
  * |--------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
- * |   =    |  +   | Home |  Up  | End  | PgUp |      |           |      |      |   %  |   7  |   8  |   9  |   *    |
+ * |        |      | Home |  Up  | End  | PgUp |      |           |      |      |   %  |   7  |   8  |   9  |   *    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Hyper  |      | Left | Down |Right | PgDn |------|           |------|   (  |   )  |   4  |   5  |   6  |   -    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | LShift |      |      |      |      |      |      |           |      |      |   0  |   1  |   2  |   3  |   +    |
+ * | LShift |      |      |      |   _  |   =  |      |           |      |      |   0  |   1  |   2  |   3  |   +    |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   | Meh  |⌘(Gui)|^/Del |      |      |                                       |      |      |   .  |   ,  | Bsp  |
  *   `----------------------------------'                                       `----------------------------------'
@@ -79,9 +79,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT_ergodox(
   // left hand
   XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_EQL,  KC_PLUS, KC_HOME,          KC_UP,  KC_END, KC_PGUP, XXXXXXX,
+  XXXXXXX, XXXXXXX, KC_HOME,        KC_UP,   KC_END,  KC_PGUP, XXXXXXX,
   KC_HYPR, XXXXXXX, KC_LEFT,        KC_DOWN, KC_RGHT, KC_PGDN,
-  _______, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  _______, XXXXXXX, XXXXXXX,        XXXXXXX, KC_UNDS, KC_EQL,  XXXXXXX,
   _______, KC_LGUI, LCTL_T(KC_DEL), XXXXXXX, XXXXXXX,
                                                       XXXXXXX, XXXXXXX,
                                                                XXXXXXX,
