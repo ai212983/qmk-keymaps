@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |  Tab   |   Й  |   Ц  |   У  |   К  |   Е  |      |           |      |  Н   |  Г   |  Ш   |  Щ   |  З   |   -_   |
+ * |    Ъ   |   Й  |   Ц  |   У  |   К  |   Е  |      |           |      |  Н   |  Г   |  Ш   |  Щ   |  З   |   Х    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |  Right |   Ф  |   Ы  |   В  |   А  |   П  |------|           |------|  Р   |  О   |  Л   |  Д   |  Ж   |   Э    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -162,8 +162,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RUSSIAN] = LAYOUT_ergodox(
   // left hand
-  KC_EQL,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_TAB,  RU_IY,   RU_C,    RU_U,    RU_K,    RU_E,    XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  RU_HS,   RU_IY,   RU_C,    RU_U,    RU_K,    RU_E,    XXXXXXX,
   KC_RGHT, RU_F,    RU_Y,    RU_V,    RU_A,    RU_P,
   KC_LSFT, RU_YA,   RU_CH,   RU_S,    RU_M,    RU_I,    XXXXXXX,
   RU_YO,   T_LANG,  XXXXXXX, XXXXXXX, XXXXXXX,
@@ -172,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                      LCTL_T(KC_DEL), LGUI_T(KC_BSPC), LOWER,
   // right hand
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, RU_N,    RU_G,    RU_SH,   RU_SC,   RU_Z,    KC_MINS,
+  XXXXXXX, RU_N,    RU_G,    RU_SH,   RU_SC,   RU_Z,    RU_H,
            RU_R,    RU_O,    RU_L,    RU_D,    RU_ZH,   RU_AE,
   XXXXXXX, RU_T,    RU_SS,   RU_B,    RU_YU,   RU_DOT,  MY_QUOT,
                     XXXXXXX, XXXXXXX, PRV_TAB, NXT_TAB, RU_SLSH,
