@@ -50,7 +50,7 @@ enum unicode_names {
 #define RU_A  XP(RU_A_L,  RU_A_U)
 #define RU_B  XP(RU_B_L,  RU_B_U)
 #define RU_V  XP(RU_V_L,  RU_V_U)
-#define RU_G  XP(RU_B_L,  RU_B_U)
+#define RU_G  XP(RU_G_L,  RU_G_U)
 #define RU_D  XP(RU_D_L,  RU_D_U)
 #define RU_E  XP(RU_E_L,  RU_E_U)
 #define RU_ZH XP(RU_ZH_L, RU_ZH_U)
