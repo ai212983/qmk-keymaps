@@ -19,8 +19,12 @@ https://ergodox-ez.com/pages/wally[`Wally`] is used for flashing.
 
 == Can be better, but its ok for now
  - Left hand is overloaded a bit because of nav keys
+ - *-+/ symbols are not too convinient
  - There is a LOT of unused keys for ErgoDox EZ
 
 == References
  - https://git.io/Je9NM[superduper mode] - activating layer by S+D
- - https://git.io/Je9NF[overriding shift]
+ - https://git.io/Je9NF[overriding shift] - like swapping ~ and `
+
+== Some reasoning (in no particular order)
+ - Navigation is bind to the left hand so right hand can use with mouse   
