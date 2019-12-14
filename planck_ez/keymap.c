@@ -100,39 +100,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower, lockable - navigation and numpad
  * ,-----------------------------------------------------------------------------------.
- * |  =   |  +   | Home |  Up  | End  | PgUp |      |   %  |   7  |   8  |   9  |  /   |
+ * |  =   |  +   | Home |  Up  | End  | PgUp |   %  |   7  |   8  |   9  |   *  |  /   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Hyper |      | Left | Down |Right | PgDn |   (  |   )  |   4  |   5  |   6  |  *   |
- * |------+------+------+------+------+------+------+------+------+------+-*----+------|
- * |Shift |      |      |      |   _  |   =  |      |   0  |   1  |   2  |   3  |  -   |
+ * |Hyper |      | Left | Down |Right | PgDn |      |   4  |   5  |   6  |   -  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Meh  |⌘(Gui)|^/Del | Bsp  |██████|    Space    |RAISE |⌥/Ent |   .  | Bspc |  +   |
+ * |Shift |      |      |      |   _  |   =  |   0  |   1  |   2  |   3  |   +  |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Meh  |⌘(Gui)|^/Del | Bsp  |██████|    Space    |RAISE |⌥/Ent |   .  |   ,  | Bspc |
  * `-----------------------------------------------------------------------------------'
  * Ctrl is shifted for better reachability by pinky
  */
 [_LOWER] = LAYOUT_planck_grid(
-    KC_EQL,  KC_PLUS, KC_HOME,        KC_UP,   KC_END,  KC_PGUP, XXXXXXX, KC_PERC, KC_7,    KC_8,    KC_9,   KC_SLSH,
-    KC_HYPR, XXXXXXX, KC_LEFT,        KC_DOWN, KC_RGHT, KC_PGDN, KC_LPRN, KC_RPRN, KC_4,    KC_5,    KC_6,   KC_ASTR,
-    _______, XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_0,    KC_1,    KC_2,    KC_3,   KC_MINS,
-    _______, KC_LGUI, LCTL_T(KC_DEL), KC_BSPC, _______, _______, _______, _______, _______, KC_DOT, KC_BSPC, KC_PLUS
+    KC_EQL,  KC_PLUS, KC_HOME,        KC_UP,   KC_END,  KC_PGUP, KC_PERC, KC_7,    KC_8,    KC_9,    KC_ASTR, KC_SLSH,
+    KC_HYPR, XXXXXXX, KC_LEFT,        KC_DOWN, KC_RGHT, KC_PGDN, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_MINS, XXXXXXX,
+    _______, XXXXXXX, XXXXXXX,        XXXXXXX, KC_UNDS, KC_EQL,  KC_0,    KC_1,    KC_2,    KC_3,    KC_PLUS, XXXXXXX,
+    _______, KC_LGUI, LCTL_T(KC_DEL), KC_BSPC, _______, _______, _______, _______, _______, KC_COMM, KC_DOT,  KC_BSPC
 ),
 
 /* Raise - F keys, brackets
  * ,------------------------------------------------------------------------------------.
- * |      |   !  |   @  |   #  |   $  |   %  |  ^   |  &   |  *   |   [  |  ]   |       |
+ * |      |   !  |   @  |   #  |   $  |   %  |  ^   |   [  |  ]   |PrvSpc|NxtSpc|MsnCtl |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
- * | Hyper|  F1  |  F2  |  F3  |  F4  |  F5  |      |Player|      |   (  |  )   |       |
+ * | Hyper|  F1  |  F2  |  F3  |  F4  |  F5  |  &   |   (  |  )   |      |      |       |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
- * | Shift|  F6  |  F7  |  F8  |  F9  |  F10 | PlPrv|PlyPse|PlNxt |   {  |  }   |       |
+ * | Shift|  F6  |  F7  |  F8  |  F9  |  F10 |  *   |   {  |  }   |      |      |       |
  * |------+------+------+------+------+------+------+------+------+------+------+-------|
- * | Meh  |      |^(Ctl)|⌘(Gui)|LOWER |             |██████|⌥(Alt)|PrvSpc|NxtSpc|MsnCtl |
+ * | Meh  |      |^(Ctl)|⌘(Gui)|LOWER |             |██████|⌥(Alt)|      |      |       |
  * `------------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_grid(
-    XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LBRC, KC_RBRC, XXXXXXX,
-    KC_HYPR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, PLAYER,  XXXXXXX, KC_LPRN, KC_RPRN, XXXXXXX,
-    _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_MPRV, KC_MPLY, KC_MNXT, KC_LCBR, KC_RCBR, XXXXXXX,
-    _______, XXXXXXX, KC_LCTL, KC_LGUI, _______, XXXXXXX, XXXXXXX, _______, KC_RALT, PRV_SPC, NXT_SPC, MSN_CTL
+    XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, PRV_SPC, NXT_SPC, MSN_CTL
+    KC_HYPR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_AMPR, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_ASTR, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, XXXXXXX, KC_LCTL, KC_LGUI, _______, XXXXXXX, XXXXXXX, _______, KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 /* Plover layer (http://opensteno.org)
