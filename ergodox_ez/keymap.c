@@ -20,17 +20,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  |   F  |   P  |   G  |PrvSpc|           |NxtSpc|   J  |   L  |   U  |   Y  |   :  |   \|   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | HprRght|   A  |   R  |   S  |   T  |   D  |------|           |------|   H  |   N  |   E  |   I  |   O  |   "'   |
+ * | Hyper  |   A  |   R  |   S  |   T  |   D  |------|           |------|   H  |   N  |   E  |   I  |   O  |   "'   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |   ,  |   .  |  /?  |   ~`   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | Meh  | Lang |      |      |      |                                       |      |      |PrvTab|NxtTab|      |
+ *   | Meh  | Lang |      |      |      |                                       |      |      |   ⌥  |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 | ^/Del| ⌘/Bsp|------|       |------|Space |⌥/Ent |
+ *                                 | ^/Del| ⌘/Bsp|------|       |------|Space |Enter |
  *                                 |      |      | LOWER|       |RAISE |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -49,10 +49,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   NXT_SPC, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSLS,
            KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    MY_QUOT,
   XXXXXXX, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MY_TILD,
-                    XXXXXXX, XXXXXXX, PRV_TAB, NXT_TAB, XXXXXXX,
+                    XXXXXXX, XXXXXXX, KC_RALT, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,
   XXXXXXX,
-  RAISE,   KC_SPACE, RALT_T(KC_ENT)
+  RAISE,   KC_SPACE, KC_ENT
 ),
 
 /* Lower, lockable - navigation and numpad
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 | ^/Del| ⌘/Bsp|------|       |------|Space |⌥/Ent |
+ *                                 | ^/Del| ⌘/Bsp|------|       |------|Space |Enter |
  *                                 |      |      |██████|       | RAISE|      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   !  |   @  |   #  |   $  |   %  |      |           |      |   ^  |   [  |  ]   |PrvSpc|NxtSpc| MsnCtl |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Hyper  |  F1  |  F2  |  F3  |  F4  |  F5  |------|           |------|   &  |   (  |  )   |      |      |        |
+ * | Hyper  |  F1  |  F2  |  F3  |  F4  |  F5  |------|           |------|   &  |   (  |  )   |PrvTab|NxtTab|        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |  F6  |  F7  |  F8  |  F9  |  F10 |      |           |      |   *  |   {  |  }   |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // right hand
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_CIRC, KC_LBRC, KC_RBRC, PRV_SPC, NXT_SPC, MSN_CTL, 
-           KC_AMPR, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX, XXXXXXX,
+           KC_AMPR, KC_LPRN, KC_RPRN, PRV_TAB, NXT_TAB, XXXXXXX,
   XXXXXXX, KC_ASTR, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX,
                     KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,
