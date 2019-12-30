@@ -30,8 +30,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 | ^/Del| ⌘/Bsp|------|       |------|Space |Enter |
- *                                 |      |      | LOWER|       |RAISE |      |      |
+ *                                 | ⌘/Bsp| LOWER|------|       |------|RAISE |Space |
+ *                                 |      |      | ^/Del|       |Enter |      |      |
  *                                 `--------------------'       `--------------------'
  */
 [_COLEMAK] = LAYOUT_ergodox(
@@ -41,9 +41,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_HYPR, KC_A,   KC_R,    KC_S,    KC_T,    KC_D,
   KC_LSFT, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,
   KC_MEH,  T_LANG, XXXXXXX, XXXXXXX, XXXXXXX,
-                                                   XXXXXXX, XXXXXXX,
-                                                            XXXXXXX,
-                           LCTL_T(KC_DEL), LGUI_T(KC_BSPC), LOWER,
+                                                
+                                                    XXXXXXX, XXXXXXX,
+                                                             XXXXXXX,
+                                   LGUI_T(KC_BSPC), LOWER,   LCTL_T(KC_DEL),
   // right hand
   MSN_CTL, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
   NXT_SPC, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSLS,
@@ -52,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     XXXXXXX, XXXXXXX, KC_RALT, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,
   XXXXXXX,
-  RAISE,   KC_SPACE, KC_ENT
+  KC_ENT,  RAISE,   KC_SPACE
 ),
 
 /* Lower, lockable - navigation and numpad
@@ -72,8 +73,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 | ^/Del| ⌘/Bsp|------|       |------|Space |Enter |
- *                                 |      |      |██████|       | RAISE|      |      |
+ *                                 | ⌘/Bsp|██████|------|       |------|RAISE |Space |
+ *                                 |      |      | ^/Del|       |Enter |      |      |
  *                                 `--------------------'       `--------------------'
  */
 [_LOWER] = LAYOUT_ergodox(
@@ -104,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   !  |   @  |   #  |   $  |   %  |      |           |      |   ^  |   [  |  ]   |PrvSpc|NxtSpc| MsnCtl |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Hyper  |      |      |   +  |   -  |  =   |------|           |------|   *  |   (  |  )   |PrvTab|NxtTab|        |
+ * | Hyper  |      |      |   +  |   -  |  =   |------|           |------|   *  |   (  |  )   |PrvTab|NxtTab|AppSwtch|
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |      |      |      |   _  |      |      |           |      |   &  |   {  |  }   |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -114,8 +115,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 | ^/Del| ⌘/Bsp|------|       |------|      |      |
- *                                 |      |      |LOWER |       |██████|      |      |
+ *                                 | ⌘/Bsp| LOWER|------|       |------|██████|Space |
+ *                                 |      |      | ^/Del|       |Enter |      |      |
  *                                 `--------------------'       `--------------------'
  */
 [_RAISE] = LAYOUT_ergodox(
@@ -131,12 +132,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // right hand
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_CIRC, KC_LBRC, KC_RBRC, PRV_SPC, NXT_SPC, MSN_CTL, 
-           KC_ASTR, KC_LPRN, KC_RPRN, PRV_TAB, NXT_TAB, XXXXXXX,
+           KC_ASTR, KC_LPRN, KC_RPRN, PRV_TAB, NXT_TAB, APP_SWT,
   XXXXXXX, KC_AMPR, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX,
                     KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,
   XXXXXXX,
-  _______, XXXXXXX, XXXXXXX
+  _______, _______, _______
 ),
 
 
