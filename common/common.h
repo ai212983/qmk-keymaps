@@ -23,12 +23,13 @@ enum common_layers {
     _COMMON_LAYERS
 };
 
-#define LOWER LT(_LOWER, KC_ESC)
-#define RAISE LT(_RAISE, KC_ESC)
+#define LOWER LT(_LOWER, KC_BSPC)
+#define RAISE LT(_RAISE, KC_SPC)
 
 #define PLAYER  KC_F24
 #define KC_LANG KC_F23
 #define APP_SWT KC_F20
+#define APP_LNC KC_F16
 #define MSN_CTL KC_F17
 #define PRV_SPC KC_F18
 #define NXT_SPC KC_F19
