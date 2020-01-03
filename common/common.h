@@ -25,6 +25,7 @@ enum common_layers {
 
 #define LOWER LT(_LOWER, KC_BSPC)
 #define RAISE LT(_RAISE, KC_SPC)
+#define MEH_TAB MEH_T(KC_TAB)
 
 #define PLAYER  KC_F24
 #define KC_LANG KC_F23
