@@ -27,4 +27,5 @@ https://ergodox-ez.com/pages/wally[`Wally`] is used for flashing.
  - https://git.io/Je9NF[overriding shift] - like swapping ~ and `
 
 == Some reasoning (in no particular order)
- - Navigation is bind to the left hand so right hand can use with mouse   
+ - Navigation is bind to the left hand so right hand can use with mouse
+ - Hyper should be used mostly for system-wide hotkeys, Meh for app-specific.
