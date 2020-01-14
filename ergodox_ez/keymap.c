@@ -104,11 +104,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      | RGB  |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   !  |   @  |   #  |   $  |   %  |      |           |      |   ^  |   [  |  ]   |PrvSpc|NxtSpc| MsnCtl |
+ * |        |   !  |   @  |   #  |   $  |   %  |      |           |      |   ^  |   [  |  ]   |PrvSpc|NxtSpc| AppLnc |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Hyper  |      |      |   +  |   -  |  =   |------|           |------|   *  |   (  |  )   |PrvTab|NxtTab|AppSwtch|
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | LShift |      |      |      |   _  |      |      |           |      |   &  |   {  |  }   |      |      |AppLnch |
+ * | LShift |      |      |      |   _  |      |      |           |      |   &  |   {  |  }   |      |      | MsnCtl |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |⌥(Alt)|      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -132,9 +132,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       _______, _______, _______,
   // right hand
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, KC_CIRC, KC_LBRC, KC_RBRC, PRV_SPC, NXT_SPC, MSN_CTL, 
+  XXXXXXX, KC_CIRC, KC_LBRC, KC_RBRC, PRV_SPC, NXT_SPC, APP_LNC, 
            KC_ASTR, KC_LPRN, KC_RPRN, PRV_TAB, NXT_TAB, APP_SWT,
-  XXXXXXX, KC_AMPR, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX, APP_LNC,
+  XXXXXXX, KC_AMPR, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX, MSN_CTL,
                     KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,
   XXXXXXX,
