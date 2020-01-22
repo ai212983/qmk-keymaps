@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     XXXXXXX, XXXXXXX, KC_DOT,  KC_BSPC, KC_EQL, 
   XXXXXXX, XXXXXXX,
   XXXXXXX,
-  _______, _______, _______
+  _______, _______, RALT(KC_ENT)
 ),
 
 /* Raise - symbols layer
