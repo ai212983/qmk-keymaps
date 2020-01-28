@@ -43,13 +43,7 @@ bool process_russian_override(uint16_t keycode, keyrecord_t *record) {
           override_key(record, KC_DOT, KC_COMM);
         }
         return false;
-
-    case RU_SLSH:
-        if (record->event.pressed) {
-          override_key(record, KC_SLSH, KC_BSLS);
-        }
-        return false;
-        
+    
     case T_LANG:
         if (record->event.pressed) {
           if (get_active_layer() == _RUSSIAN) {

@@ -13,8 +13,7 @@ https://ergodox-ez.com/pages/wally[`Wally`] is used for flashing.
 
 == Backlog
  - Lock LOWER by tapping (it is also ESC, so not compatible with built-in TT)
- - Windows management
- - Generate layout PNGs
+ - Better yabai/windows management
  - also check Issues section for already planned features
 
 == Can be better, but its ok for now

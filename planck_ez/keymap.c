@@ -69,14 +69,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |LShift|   Я  |   Ч  |   С  |   М  |   И  |   Т  |   Ь  |   Б  |   Ю  |  .,  |  "'  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   Ë  |      | ^/Del| ⌘/Esc|LWRBsp|   Meh/Tab   |RAISpc|⌥/Ent |      |      |  \/  |
+ * |   Ë  |      | ^/Del| ⌘/Esc|LWRBsp|   Meh/Tab   |RAISpc|⌥/Ent |      |  /?  |  \|  |
  * `-----------------------------------------------------------------------------------'
  */
 [_RUSSIAN] = LAYOUT_planck_grid(
     RU_HS,   RU_IY,   RU_C,    RU_U,    RU_K,    RU_E,    RU_N,    RU_G,    RU_SH,   RU_SC,   RU_Z,    RU_H,
     _______, RU_F,    RU_Y,    RU_V,    RU_A,    RU_P,    RU_R,    RU_O,    RU_L,    RU_D,    RU_ZH,   RU_AE,
     _______, RU_YA,   RU_CH,   RU_S,    RU_M,    RU_I,    RU_T,    RU_SS,   RU_B,    RU_YU,   RU_DOT,  MY_QUOT,
-    RU_YO,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RU_SLSH
+    RU_YO,   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_SLSH, KC_BSLS
 ),
 
 /* Qwerty
