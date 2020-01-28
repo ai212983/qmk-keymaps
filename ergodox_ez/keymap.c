@@ -16,7 +16,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Colemak
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   -_   |
+ * | Version|   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   -_   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   Q  |   W  |   F  |   P  |   G  |      |           |      |   J  |   L  |   U  |   Y  |   :  |   \|   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_COLEMAK] = LAYOUT_ergodox(
   // left hand
-  XXXXXXX, KC_1,   KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
+  KC_VRSN, KC_1,   KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
   XXXXXXX, KC_Q,   KC_W,    KC_F,    KC_P,    KC_G, XXXXXXX,
   KC_HYPR, KC_A,   KC_R,    KC_S,    KC_T,    KC_D,
   KC_LSFT, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,

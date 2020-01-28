@@ -6,7 +6,7 @@ bool process_common_override(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_VRSN:
             if (record->event.pressed) {
-                SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+                SEND_STRING ("QMK: " QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Keyset: " KEYSET_VERSION "/" KEYSET_DATETIME);
             }
             return false;
     }
