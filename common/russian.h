@@ -6,7 +6,6 @@ extern const uint32_t PROGMEM unicode_map[];
 
 enum russian_keycodes {
   RU_DOT = COMMON_SAFE_RANGE,
-  RU_SLSH,
   RUSSIAN_SAFE_RANGE
 };
 

@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Я  |   Ч  |   С  |   М  |   И  |      |           |      |  Т   |  Ь   |  Б   |  Ю   |  .,  |   "'   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |   Ë  | Lang |      |      |      |                                       |      |      |PrvTab|NxtTab|  \/  |
+ *   |   Ë  | Lang |      |      |      |                                       |      |      |      |  /?  |  \|  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -177,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, RU_N,    RU_G,    RU_SH,   RU_SC,   RU_Z,    RU_H,
            RU_R,    RU_O,    RU_L,    RU_D,    RU_ZH,   RU_AE,
   XXXXXXX, RU_T,    RU_SS,   RU_B,    RU_YU,   RU_DOT,  MY_QUOT,
-                    XXXXXXX, XXXXXXX, PRV_TAB, NXT_TAB, RU_SLSH,
+                    XXXXXXX, XXXXXXX, XXXXXXX, KC_SLSH, KC_BSLS,
   XXXXXXX, XXXXXXX,
   XXXXXXX,
   _______, _______, _______
