@@ -102,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Raise - symbols layer
  * Shifting left mod key to be reachable
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      | RGB  |      |           |      |      |      |      |      |      |        |
+ * | RGB_TOG|RGBSLD|RGBMOD|      |RGB H+|RGB S+|RGB V+|           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   !  |   @  |   #  |   $  |   %  |      |           |      |   ^  |   [  |  ]   |PrvSpc|NxtSpc| AppLnc |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT_ergodox(
   // left hand
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_SLD, XXXXXXX,
+  RGB_TOG, RGB_SLD, RGB_MOD, XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI,
   XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, XXXXXXX,
   _______, XXXXXXX, XXXXXXX, KC_PLUS, KC_MINS, KC_EQL,
   _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_UNDS, XXXXXXX, XXXXXXX,
@@ -215,15 +215,8 @@ void matrix_init_user(void) {
 #endif
 };
 
-// Runs whenever there is a layer state change.
-layer_state_t layer_state_set_user(layer_state_t state) {
-  ergodox_board_led_off();
-  ergodox_right_led_1_off();
-  ergodox_right_led_2_off();
-  ergodox_right_led_3_off();
-
-  uint8_t layer = biton32(state);
-  switch (layer) {
+void set_layer_led(uint8_t layer) {
+    switch (layer) {
       case 0:
         #ifdef RGBLIGHT_COLOR_LAYER_0
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
@@ -233,10 +226,16 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         #endif
         #endif
         break;
+
+      case _RUSSIAN:
+        ergodox_right_led_1_on();
+        break;
+
+   /* 
       case 1:
         ergodox_right_led_1_on();
         #ifdef RGBLIGHT_COLOR_LAYER_1
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1);
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1)
         #endif
         break;
       case 2:
@@ -280,9 +279,20 @@ layer_state_t layer_state_set_user(layer_state_t state) {
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_7);
         #endif
         break;
+*/
       default:
         break;
     }
+}
 
-  return state;
+// Runs constantly in background loop.
+void matrix_scan_user(void) {
+
+  ergodox_board_led_off();
+  ergodox_right_led_1_off();
+  ergodox_right_led_2_off();
+  ergodox_right_led_3_off();
+
+  set_layer_led(biton32(layer_state));
+  set_layer_led(get_active_layer());
 };
