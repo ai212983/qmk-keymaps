@@ -15,15 +15,15 @@ enum ergodox_keycodes {
  */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Colemak
+/* Workman
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * | Version|   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   -_   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   Q  |   W  |   F  |   P  |   G  |      |           |      |   J  |   L  |   U  |   Y  |   :  |   \|   |
+ * |        |   Q  |   D  |   R  |   W  |   B  |      |           |      |   J  |   F  |   U  |   P  |   :  |   \|   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Hyper  |   A  |   R  |   S  |   T  |   D  |------|           |------|   H  |   N  |   E  |   I  |   O  |   "'   |
+ * | Hyper  |   A  |   S  |   H  |   T  |   G  |------|           |------|   Y  |   N  |   E  |   O  |   I  |   "'   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |   ,  |   .  |  /?  |   ~`   |
+ * | LShift |   Z  |   X  |   M  |   C  |   V  |      |           |      |   K  |   L  |   ,  |   .  |  /?  |   ~`   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      | Lang |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -39,9 +39,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_COLEMAK] = LAYOUT_ergodox(
   // left hand
   KC_VRSN, KC_1,   KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
-  XXXXXXX, KC_Q,   KC_W,    KC_F,    KC_P,    KC_G, XXXXXXX,
-  KC_HYPR, KC_A,   KC_R,    KC_S,    KC_T,    KC_D,
-  KC_LSFT, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,
+  XXXXXXX, KC_Q,   KC_D,    KC_R,    KC_W,    KC_B, XXXXXXX,
+  KC_HYPR, KC_A,   KC_S,    KC_H,    KC_T,    KC_G,
+  KC_LSFT, KC_Z,   KC_X,    KC_M,    KC_C,    KC_V, XXXXXXX,
   XXXXXXX, T_LANG, XXXXXXX, XXXXXXX, XXXXXXX,
                                                 
                                                     XXXXXXX, XXXXXXX,
@@ -49,9 +49,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     LGUI_T(KC_ESC), LOWER,   LCTL_T(KC_DEL),
   // right hand
   XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-  XXXXXXX, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSLS,
-           KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    MY_QUOT,
-  XXXXXXX, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MY_TILD,
+  XXXXXXX, KC_J,    KC_F,    KC_U,    KC_P,    KC_SCLN, KC_BSLS,
+           KC_Y,    KC_N,    KC_E,    KC_O,    KC_I,    MY_QUOT,
+  XXXXXXX, KC_K,    KC_L,    KC_COMM, KC_DOT,  KC_SLSH, MY_TILD,
                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,
   XXXXXXX,
@@ -143,15 +143,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 
-/* Russian
+/* Russian quazioptimal, see https://habr.com/ru/post/210826/
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |    Ъ   |   Й  |   Ц  |   У  |   К  |   Е  |      |           |      |  Н   |  Г   |  Ш   |  Щ   |  З   |   Х    |
+ * |    Ц   |   Ч  |   А  |   К  |   Ы  |   М  |      |           |      |  В   |  Л   |  З   |  Ш   |  Й   |   Ф    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |  Right |   Ф  |   Ы  |   В  |   А  |   П  |------|           |------|  Р   |  О   |  Л   |  Д   |  Ж   |   Э    |
+ * |    Ъ   |   П  |   И  |   О  |   Е  |   У  |------|           |------|  Р   |  Н   |  Т   |  С   |  Б   |   Х    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | LShift |   Я  |   Ч  |   С  |   М  |   И  |      |           |      |  Т   |  Ь   |  Б   |  Ю   |  .,  |   "'   |
+ * | LShift |   Э  |   Ю  |   Ь  |   Я  |  .?  |      |           |      |  Г   |  ,/  |  Д   |  Ж   |  Щ   |   "'   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |   Ë  | Lang |      |      |      |                                       |      |      |      |  /?  |  \|  |
  *   `----------------------------------'                                       `----------------------------------'
@@ -166,18 +166,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RUSSIAN] = LAYOUT_ergodox(
   // left hand
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  RU_HS,   RU_IY,   RU_C,    RU_U,    RU_K,    RU_E,    XXXXXXX,
-  KC_RGHT, RU_F,    RU_Y,    RU_V,    RU_A,    RU_P,
-  KC_LSFT, RU_YA,   RU_CH,   RU_S,    RU_M,    RU_I,    XXXXXXX,
+  RU_C,    RU_CH,   RU_A,    RU_K,    RU_Y,    RU_M,    XXXXXXX,
+  RU_HS,   RU_P,    RU_I,    RU_O,    RU_E,    RU_U,
+  KC_LSFT, RU_AE,   RU_YU,   RU_SS,   RU_YA,   RU_DOT,  XXXXXXX,
   RU_YO,   T_LANG,  XXXXXXX, XXXXXXX, XXXXXXX,
                                                XXXXXXX, XXXXXXX,
                                                         XXXXXXX,
                                       _______, _______, _______,
   // right hand
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, RU_N,    RU_G,    RU_SH,   RU_SC,   RU_Z,    RU_H,
-           RU_R,    RU_O,    RU_L,    RU_D,    RU_ZH,   RU_AE,
-  XXXXXXX, RU_T,    RU_SS,   RU_B,    RU_YU,   RU_DOT,  MY_QUOT,
+  XXXXXXX, RU_V,    RU_L,    RU_Z,    RU_SH,   RU_IY,   RU_F,
+           RU_R,    RU_N,    RU_T,    RU_S,    RU_B,    RU_H,
+  XXXXXXX, RU_G,    RU_COMM, RU_D,    RU_ZH,   RU_SC,   MY_QUOT,
                     XXXXXXX, XXXXXXX, XXXXXXX, KC_SLSH, KC_BSLS,
   XXXXXXX, XXXXXXX,
   XXXXXXX,
