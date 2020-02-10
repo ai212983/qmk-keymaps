@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  *                                 TODO: update other layout pictures 
  */
-[_COLEMAK] = LAYOUT_ergodox(
+[_WORKMAN] = LAYOUT_ergodox(
   // left hand
   KC_VRSN, KC_1,   KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
   XXXXXXX, KC_Q,   KC_D,    KC_R,    KC_W,    KC_B, XXXXXXX,
@@ -149,11 +149,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |    Ц   |   Ч  |   А  |   К  |   Ы  |   М  |      |           |      |  В   |  Л   |  З   |  Ш   |  Й   |   Ф    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |    Ъ   |   П  |   И  |   О  |   Е  |   У  |------|           |------|  Р   |  Н   |  Т   |  С   |  Б   |   Х    |
+ * |    Ъ   |   П  |   И  |   О  |   Е  |   У  |------|           |------|  Р   |  Н   |  Т   |  С   |  Б   |   Х    | - HYPER is unusable in russian anyway
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Э  |   Ю  |   Ь  |   Я  |  .?  |      |           |      |  Г   |  ,/  |  Д   |  Ж   |  Щ   |   "'   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |   Ë  | Lang |      |      |      |                                       |      |      |      |  /?  |  \|  |
+ *   |      | Lang |      |      |      |                                       |      |      |  Ë   |  /?  |  \|  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -168,8 +168,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   RU_C,    RU_CH,   RU_A,    RU_K,    RU_Y,    RU_M,    XXXXXXX,
   RU_HS,   RU_P,    RU_I,    RU_O,    RU_E,    RU_U,
-  KC_LSFT, RU_AE,   RU_YU,   RU_SS,   RU_YA,   RU_DOT,  XXXXXXX,
-  RU_YO,   T_LANG,  XXXXXXX, XXXXXXX, XXXXXXX,
+  _______, RU_AE,   RU_YU,   RU_SS,   RU_YA,   RU_DOT,  XXXXXXX,
+  _______,   T_LANG,  XXXXXXX, XXXXXXX, XXXXXXX,
                                                XXXXXXX, XXXXXXX,
                                                         XXXXXXX,
                                       _______, _______, _______,
@@ -178,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, RU_V,    RU_L,    RU_Z,    RU_SH,   RU_IY,   RU_F,
            RU_R,    RU_N,    RU_T,    RU_S,    RU_B,    RU_H,
   XXXXXXX, RU_G,    RU_COMM, RU_D,    RU_ZH,   RU_SC,   MY_QUOT,
-                    XXXXXXX, XXXXXXX, XXXXXXX, KC_SLSH, KC_BSLS,
+                    XXXXXXX, XXXXXXX, RU_YO,   KC_SLSH, KC_BSLS,
   XXXXXXX, XXXXXXX,
   XXXXXXX,
   _______, _______, _______

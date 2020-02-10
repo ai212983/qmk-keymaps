@@ -13,8 +13,8 @@ bool process_common_override(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-uint16_t active_layer = _COLEMAK;
-uint16_t prev_layer = _COLEMAK;
+uint16_t active_layer = _WORKMAN;
+uint16_t prev_layer = _WORKMAN;
 
 void set_persistent_layer(uint16_t layer) {
     prev_layer = active_layer;
