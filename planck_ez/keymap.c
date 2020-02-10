@@ -42,41 +42,41 @@ enum planck_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          
 
-/* Colemak
+/* Workman
  * ,-----------------------------------------------------------------------------------.
- * |      |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  |  \|  |
+ * |      |   Q  |   D  |   R  |   W  |   B  |  J   |  F   |  U   |  P   |  ;   |  \|  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Hyper |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  "'  |
+ * |Hyper |   A  |   S  |   H  |   T  |   G  |  Y   |  N   |  E   |  O   |  I   |  "'  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |LShift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |  /?  |  ~`  |
+ * |LShift|   Z  |   X  |   M  |   C  |   V  |  K   |  L   |  ,   |  .   |  /?  |  ~`  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | Lang | ^/Del| ⌘/Esc|LWRBsp|   Meh/Tab   |RAISpc|⌥/Ent |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 
-[_COLEMAK] = LAYOUT_planck_grid(
-    XXXXXXX, KC_Q,   KC_W,           KC_F,           KC_P,  KC_G,    KC_J,    KC_L,  KC_U,           KC_Y,    KC_SCLN, KC_BSLS,
-    KC_HYPR, KC_A,   KC_R,           KC_S,           KC_T,  KC_D,    KC_H,    KC_N,  KC_E,           KC_I,    KC_O,    MY_QUOT,
-    KC_LSFT, KC_Z,   KC_X,           KC_C,           KC_V,  KC_B,    KC_K,    KC_M,  KC_COMM,        KC_DOT,  KC_SLSH, MY_TILD,
+[_WORKMAN] = LAYOUT_planck_grid(
+    XXXXXXX, KC_Q,   KC_D,           KC_R,           KC_W,  KC_B,    KC_J,    KC_F,  KC_U,           KC_P,    KC_SCLN, KC_BSLS,
+    KC_HYPR, KC_A,   KC_S,           KC_H,           KC_T,  KC_G,    KC_Y,    KC_N,  KC_E,           KC_O,    KC_I,    MY_QUOT,
+    KC_LSFT, KC_Z,   KC_X,           KC_M,           KC_C,  KC_V,    KC_K,    KC_L,  KC_COMM,        KC_DOT,  KC_SLSH, MY_TILD,
     XXXXXXX, T_LANG, LCTL_T(KC_DEL), LGUI_T(KC_ESC), LOWER, MEH_TAB, MEH_TAB, RAISE, RALT_T(KC_ENT), XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 /* Russian
  * ,-----------------------------------------------------------------------------------.
- * |   Ъ  |   Й  |   Ц  |   У  |   К  |   Е  |   Н  |   Г  |   Ш  |   Щ  |   З  |  Х   |
+ * |   Ц  |   Ч  |   А  |   К  |   Ы  |   М  |  В   |  Л   |  З   |  Ш   |  Й   |  Ф   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Hyper |   Ф  |   Ы  |   В  |   А  |   П  |   Р  |   О  |   Л  |   Д  |   Ж  |  Э   |
+ * |   Ъ  |   П  |   И  |   О  |   Е  |   У  |  Р   |  Н   |  Т   |  С   |  Б   |  Х   |  - we do not need HYPER in Russian, it won't work anyway
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |LShift|   Я  |   Ч  |   С  |   М  |   И  |   Т  |   Ь  |   Б  |   Ю  |  .,  |  "'  |
+ * |LShift|   Э  |   Ю  |   Ь  |   Я  |  .?  |  ,/  |  Г   |  Д   |  Ж   |  Щ   |  "'  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   Ë  |      | ^/Del| ⌘/Esc|LWRBsp|   Meh/Tab   |RAISpc|⌥/Ent |      |  /?  |  \|  |
+ * |      | Lang | ^/Del| ⌘/Esc|LWRBsp|   Meh/Tab   |RAISpc|⌥/Ent |  Ë   |  /?  |  \|  |
  * `-----------------------------------------------------------------------------------'
  */
 [_RUSSIAN] = LAYOUT_planck_grid(
-    RU_HS,   RU_IY,   RU_C,    RU_U,    RU_K,    RU_E,    RU_N,    RU_G,    RU_SH,   RU_SC,   RU_Z,    RU_H,
-    _______, RU_F,    RU_Y,    RU_V,    RU_A,    RU_P,    RU_R,    RU_O,    RU_L,    RU_D,    RU_ZH,   RU_AE,
-    _______, RU_YA,   RU_CH,   RU_S,    RU_M,    RU_I,    RU_T,    RU_SS,   RU_B,    RU_YU,   RU_DOT,  MY_QUOT,
-    RU_YO,   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_SLSH, KC_BSLS
+    RU_C,    RU_CH,   RU_A,    RU_K,    RU_Y,    RU_M,    RU_V,    RU_L,    RU_Z,    RU_SH,   RU_IY,   RU_F,
+    RU_HS,   RU_P,    RU_I,    RU_O,    RU_E,    RU_U,    RU_R,    RU_N,    RU_T,    RU_S,    RU_B,    RU_H,
+    _______, RU_AE,   RU_YU,   RU_SS,   RU_YA,   RU_DOT,  RU_COMM, RU_G,    RU_D,    RU_ZH,   RU_SC,   MY_QUOT,
+    RU_YO,   _______, _______, _______, _______, _______, _______, _______, _______, RU_YO,   KC_SLSH, KC_BSLS
 ),
 
 /* Qwerty
@@ -168,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_planck_grid(
     KC_VRSN, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
-    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, COLEMAK, QWERTY,   PLOVER,  _______, _______,
+    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, WORKMAN, QWERTY,   PLOVER,  _______, _______,
     _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
 )
@@ -198,9 +198,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
-    case COLEMAK:
+    case WORKMAN:
       if (record->event.pressed) {
-        set_persistent_layer(_COLEMAK);
+        set_persistent_layer(_WORKMAN);
       }
       return false;
 

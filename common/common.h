@@ -7,7 +7,7 @@
 #define TAPPING_TERM 50
 
 enum common_keycodes {
-  COLEMAK = SAFE_RANGE,
+  WORKMAN = SAFE_RANGE,
   QWERTY,
   PLOVER,
   EXT_PLV,
@@ -19,7 +19,7 @@ enum common_keycodes {
 };
 
 enum common_layers {
-    _COLEMAK,
+    _WORKMAN,
     _QWERTY,
     _RUSSIAN,
     _LOWER,
