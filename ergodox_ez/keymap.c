@@ -9,6 +9,7 @@ enum ergodox_keycodes {
   RGB_SLD = RUSSIAN_SAFE_RANGE,
   EPRM
 };
+
 /* ⌘ - GUI, ^ - Ctrl, ⌥ - Alt, ⇧ - Shift
  * Hyper - Ctrl + Shift + Alt + Gui
  * Meh - Ctrl + Shift + Alt
@@ -25,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   M  |   C  |   V  |      |           |      |   K  |   L  |   ,  |   .  |  /?  |   ~`   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      | Lang |      |      |      |                                       |      |      |      |      |      |
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -34,15 +35,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 | ⌘/Esc|LwrBsp|------|       |------|RaiSpc|⌥/Ent |
  *                                 |      |      | ^/Del|       |MehTab|      |      |
  *                                 `--------------------'       `--------------------'
- *                                 TODO: update other layout pictures 
  */
 [_WORKMAN] = LAYOUT_ergodox(
   // left hand
-  KC_VRSN, KC_1,   KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
-  XXXXXXX, KC_Q,   KC_D,    KC_R,    KC_W,    KC_B, XXXXXXX,
-  KC_HYPR, KC_A,   KC_S,    KC_H,    KC_T,    KC_G,
-  KC_LSFT, KC_Z,   KC_X,    KC_M,    KC_C,    KC_V, XXXXXXX,
-  XXXXXXX, T_LANG, XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_VRSN, KC_1,    KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
+  XXXXXXX, KC_Q,    KC_D,    KC_R,    KC_W,    KC_B, XXXXXXX,
+  KC_HYPR, KC_A,    KC_S,    KC_H,    KC_T,    KC_G,
+  KC_LSFT, KC_Z,    KC_X,    KC_M,    KC_C,    KC_V, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                                 
                                                     XXXXXXX, XXXXXXX,
                                                              KC_LALT,
@@ -56,6 +56,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX,
   XXXXXXX,
   MEH_TAB, RAISE, RALT_T(KC_ENT)
+),
+
+/* Russian quazioptimal, see https://habr.com/ru/post/210826/
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |    Ц   |   Ч  |   А  |   К  |   Ы  |   М  |      |           |      |  В   |  Л   |  З   |  Ш   |  Й   |   Ф    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |    Ъ   |   П  |   И  |   О  |   Е  |   У  |------|           |------|  Р   |  Н   |  Т   |  С   |  Б   |   Х    | - HYPER is unusable in russian anyway
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * | LShift |   Э  |   Ю  |   Ь  |   Я  |  .?  |      |           |      |  ,/  |  Г   |  Д   |  Ж   |  Щ   |   "'   |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |   Ë  |      |      |      |                                       |      |      |      |      |  \|  |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 | ⌘/Esc|LwrBsp|------|       |------|RaiSpc|⌥/Ent |
+ *                                 |      |      | ^/Del|       |MehTab|      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[_RUSSIAN] = LAYOUT_ergodox(
+  // left hand
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  RU_C,    RU_CH,   RU_A,    RU_K,    RU_Y,    RU_M,    XXXXXXX,
+  RU_HS,   RU_P,    RU_I,    RU_O,    RU_E,    RU_U,
+  _______, RU_AE,   RU_YU,   RU_SS,   RU_YA,   RU_DOT,  XXXXXXX,
+  _______, RU_YO,   XXXXXXX, XXXXXXX, XXXXXXX,
+                                               XXXXXXX, XXXXXXX,
+                                                        XXXXXXX,
+                                      _______, _______, _______,
+  // right hand
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, RU_V,    RU_L,    RU_Z,    RU_SH,   RU_IY,   RU_F,
+           RU_R,    RU_N,    RU_T,    RU_S,    RU_B,    RU_H,
+  XXXXXXX, RU_COMM, RU_G,    RU_D,    RU_ZH,   RU_SC,   MY_QUOT,
+                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSLS,
+  XXXXXXX, XXXXXXX,
+  XXXXXXX,
+  _______, _______, _______
 ),
 
 /* Lower, lockable - navigation and numpad
@@ -103,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Raise - symbols layer
  * Shifting left mod key to be reachable
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * | RGB_TOG|RGBSLD|RGBMOD|      |RGB H+|RGB S+|RGB V+|           |      |      |      |      |      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   !  |   @  |   #  |   $  |   %  |      |           |      |   ^  |   [  |  ]   |PrvSpc|NxtSpc| AppLnc |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -123,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT_ergodox(
   // left hand
-  RGB_TOG, RGB_SLD, RGB_MOD, XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, XXXXXXX,
   _______, XXXXXXX, XXXXXXX, KC_PLUS, KC_MINS, KC_EQL,
   _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_UNDS, XXXXXXX, XXXXXXX,
@@ -142,49 +183,86 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______
 ),
 
-
-/* Russian quazioptimal, see https://habr.com/ru/post/210826/
+/* Adjust (Lower + Raise) - Control and utilities
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |    Ц   |   Ч  |   А  |   К  |   Ы  |   М  |      |           |      |  В   |  Л   |  З   |  Ш   |  Й   |   Ф    |
+ * |Version |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |    Ъ   |   П  |   И  |   О  |   Е  |   У  |------|           |------|  Р   |  Н   |  Т   |  С   |  Б   |   Х    | - HYPER is unusable in russian anyway
+ * |RGB_TOG |RGBSLD|RGBMOD|RGB H+|RGB S+|RGB V+|------|           |------|Wrkman|Rssian|      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | LShift |   Э  |   Ю  |   Ь  |   Я  |  .?  |      |           |      |  ,/  |  Г   |  Д   |  Ж   |  Щ   |   "'   |
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      | Lang |      |      |      |                                       |      |      |  Ë   |      |  \|  |
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 | ⌘/Esc|LwrBsp|------|       |------|RaiSpc|⌥/Ent |
+ *                                 | ⌘/Esc|██████|------|       |------|██████|⌥/Ent |
  *                                 |      |      | ^/Del|       |MehTab|      |      |
  *                                 `--------------------'       `--------------------'
  */
-[_RUSSIAN] = LAYOUT_ergodox(
+[_ADJUST] = LAYOUT_ergodox(
   // left hand
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  RU_C,    RU_CH,   RU_A,    RU_K,    RU_Y,    RU_M,    XXXXXXX,
-  RU_HS,   RU_P,    RU_I,    RU_O,    RU_E,    RU_U,
-  _______, RU_AE,   RU_YU,   RU_SS,   RU_YA,   RU_DOT,  XXXXXXX,
-  _______, T_LANG,  XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_VRSN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  RGB_TOG, RGB_SLD, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                                XXXXXXX, XXXXXXX,
                                                         XXXXXXX,
-                                      _______, _______, _______,
+                                      XXXXXXX, _______, XXXXXXX,
   // right hand
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, RU_V,    RU_L,    RU_Z,    RU_SH,   RU_IY,   RU_F,
-           RU_R,    RU_N,    RU_T,    RU_S,    RU_B,    RU_H,
-  XXXXXXX, RU_COMM, RU_G,    RU_D,    RU_ZH,   RU_SC,   MY_QUOT,
-                    XXXXXXX, XXXXXXX, RU_YO,   XXXXXXX, KC_BSLS,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+           WORKMAN, RUSSIAN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,
   XXXXXXX,
-  _______, _______, _______
+  XXXXXXX, _______, XXXXXXX
 )
 
 };
+
+// ----- Helpers
+
+void indicate_layer(uint8_t layer) {
+  ergodox_board_led_off();
+  ergodox_right_led_1_off();
+  ergodox_right_led_2_off();
+  ergodox_right_led_3_off();
+  
+  switch (layer) {
+    case _RUSSIAN:
+      ergodox_right_led_1_set(LED_BRIGHTNESS_LO);
+      ergodox_right_led_1_on();
+      break;
+ 
+    default: 
+      break;
+  }
+}
+
+// ----- Overrided defaults
+
+// Runs just one time when the keyboard initializes.
+void matrix_init_user(void) {
+  set_unicode_input_mode(UC_OSX); // Mac OSX
+  #ifdef RGBLIGHT_ENABLE
+    rgblight_init();
+  #endif
+};
+
+// Runs constantly in background loop.
+void matrix_scan_user(void) {
+   indicate_layer(get_active_layer());
+};
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -199,106 +277,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         eeconfig_init();
         return false;
       #ifdef RGBLIGHT_ENABLE
-      case RGB_SLD:
-        rgblight_mode(1);
-        return false;
+        case RGB_SLD:
+          rgblight_mode(1);
+          return false;
       #endif
     }
   }
   return true;
 }
 
-// Runs just one time when the keyboard initializes.
-void matrix_init_user(void) {
-    set_unicode_input_mode(UC_OSX); // Mac OSX
-#ifdef RGBLIGHT_COLOR_LAYER_0
-  rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
-#endif
-};
-
-void set_layer_led(uint8_t layer) {
-    switch (layer) {
-      case 0:
-        #ifdef RGBLIGHT_COLOR_LAYER_0
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
-        #else
-        #ifdef RGBLIGHT_ENABLE
-          rgblight_init();
-        #endif
-        #endif
-        break;
-
-      case _RUSSIAN:
-        ergodox_right_led_1_on();
-        break;
-
-   /* 
-      case 1:
-        ergodox_right_led_1_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_1
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1)
-        #endif
-        break;
-      case 2:
-        ergodox_right_led_2_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_2
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
-        #endif
-        break;
-      case 3:
-        ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_3
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_3);
-        #endif
-        break;
-      case 4:
-        ergodox_right_led_1_on();
-        ergodox_right_led_2_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_4
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_4);
-        #endif
-        break;
-      case 5:
-        ergodox_right_led_1_on();
-        ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_5
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_5);
-        #endif
-        break;
-      case 6:
-        ergodox_right_led_2_on();
-        ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_6
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_6);
-        #endif
-        break;
-      case 7:
-        ergodox_right_led_1_on();
-        ergodox_right_led_2_on();
-        ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_7
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_7);
-        #endif
-        break;
-*/
-      default:
-        break;
-    }
-}
-
-// Runs constantly in background loop.
-void matrix_scan_user(void) {
-
-  ergodox_board_led_off();
-  ergodox_right_led_1_off();
-  ergodox_right_led_2_off();
-  ergodox_right_led_3_off();
-
-  set_layer_led(biton32(layer_state));
-  set_layer_led(get_active_layer());
-};
-
-
+// ----- Work in progress 
 
 void raw_hid_receive(uint8_t *data, uint8_t length) {
     uint8_t *command_id   = &(data[0]);
