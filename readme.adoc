@@ -27,6 +27,6 @@ https://ergodox-ez.com/pages/wally[`Wally`] is used for flashing.
 
 == Some notes and reasoning (in no particular order)
  - https://beta.docs.qmk.fm/features/feature_tap_dance[Tap Dance] adds annoying delay before character appears. 
-   TD should be avoided on frequently used keys.
- - Navigation is bind to the left hand so right hand can use with mouse
+   TD should be avoided, at least on frequently used keys.
+ - Navigation is bind to the left hand so right hand can use the mouse.
  - Hyper should be used mostly for system-wide hotkeys, Meh for app-specific.
