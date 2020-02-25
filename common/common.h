@@ -14,7 +14,6 @@ enum common_keycodes {
   EXT_PLV,
   MY_QUOT,
   MY_TILD,
-  T_LANG,
   KC_VRSN,
   COMMON_SAFE_RANGE
 };
@@ -34,7 +33,6 @@ enum common_layers {
 #define RAISE LT(_RAISE, KC_SPC)
 #define MEH_TAB MEH_T(KC_TAB)
 
-#define KC_LANG KC_F23
 #define APP_SWT KC_F20
 #define APP_LNC KC_F16
 #define MSN_CTL KC_F17
