@@ -9,6 +9,7 @@
 enum common_keycodes {
   WORKMAN = SAFE_RANGE,
   QWERTY,
+  RUSSIAN,
   PLOVER,
   EXT_PLV,
   MY_QUOT,
@@ -24,6 +25,7 @@ enum common_layers {
     _RUSSIAN,
     _LOWER,
     _RAISE,
+    _ADJUST,
     _PLOVER,
     _COMMON_LAYERS
 };
@@ -32,7 +34,6 @@ enum common_layers {
 #define RAISE LT(_RAISE, KC_SPC)
 #define MEH_TAB MEH_T(KC_TAB)
 
-#define PLAYER  KC_F24
 #define KC_LANG KC_F23
 #define APP_SWT KC_F20
 #define APP_LNC KC_F16

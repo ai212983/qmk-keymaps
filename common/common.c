@@ -9,6 +9,24 @@ bool process_common_override(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING ("QMK: " QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Keyset: " KEYSET_VERSION "/" KEYSET_DATETIME);
             }
             return false;
+      
+        case QWERTY:
+            if (record->event.pressed) {
+                set_persistent_layer(_QWERTY);
+            }
+            return false;
+
+        case RUSSIAN:
+            if (record->event.pressed) {
+                set_persistent_layer(_RUSSIAN);
+            }
+            return false;
+
+        case WORKMAN:
+            if (record->event.pressed) {
+                set_persistent_layer(_WORKMAN);
+            }
+            return false;
     }
     return true;
 }
