@@ -39,26 +39,12 @@ const uint32_t PROGMEM unicode_map[] = {
 bool process_russian_override(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case RU_DOT:
-        override_key(record, KC_DOT, KC_QUES);
-        return false;
+      override_key(record, KC_DOT, KC_QUES);
+      return false;
     
     case RU_COMM:
-        override_key(record, KC_COMM, KC_SLSH);
-        return false;
-    
-    case T_LANG:
-        if (record->event.pressed) {
-          if (get_active_layer() == _RUSSIAN) {
-            set_prev_layer();
-          } else {
-            set_persistent_layer(_RUSSIAN);
-          }
-          register_code(KC_LANG);
-        } else {
-            unregister_code(KC_LANG);
-        }
-        return false;
-
+      override_key(record, KC_COMM, KC_SLSH);
+      return false;
   }
   return true;
 }
