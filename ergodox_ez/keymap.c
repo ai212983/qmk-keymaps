@@ -1,6 +1,4 @@
 #include "common.h"
-#include "russian.h"
-#include "shift_override.h"
 #include "raw_hid.h"
 
 extern keymap_config_t keymap_config;
@@ -133,9 +131,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // right hand
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, 
   XXXXXXX, KC_PERC, KC_7,    KC_8,    KC_9,    KC_ASTR, KC_SLSH, 
-           XXXXXXX, KC_4,    KC_5,    KC_6,    TD_MINS, XXXXXXX, 
+           XXXXXXX, KC_4,    KC_5,    KC_6,    KC_MINS, XXXXXXX, 
   XXXXXXX, KC_0,    KC_1,    KC_2,    KC_3,    KC_PLUS, XXXXXXX, 
-                    XXXXXXX, XXXXXXX, TD_DOT,  KC_BSPC, KC_EQL, 
+                    XXXXXXX, XXXXXXX, KC_DOT,  KC_BSPC, KC_EQL, 
   XXXXXXX, XXXXXXX,
   XXXXXXX,
   _______, _______, RALT(KC_ENT)
@@ -258,7 +256,7 @@ void matrix_init_user(void) {
 // Runs constantly in background loop.
 void matrix_scan_user(void) {
    indicate_layer(get_active_layer());
-};
+}
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
@@ -266,10 +264,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-  if (!process_shift_override(keycode, record) ||
-        !process_russian_override(keycode, record) ||
-        !process_common_override(keycode, record))
-        return true;
+  if (!process_common_override(keycode, record)) {
+    return false;
+  }
 
   if (record->event.pressed) {
     switch (keycode) {

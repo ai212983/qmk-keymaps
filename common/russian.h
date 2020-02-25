@@ -1,16 +1,15 @@
 #pragma once
-#include "common.h"
 #include "shift_override.h"
 
 extern const uint32_t PROGMEM unicode_map[];
 
-enum russian_keycodes {
-  RU_DOT = COMMON_SAFE_RANGE,
+enum {
+  RU_DOT = SHIFT_SAFE_RANGE,
   RU_COMM,
   RUSSIAN_SAFE_RANGE
 };
 
-enum unicode_names {
+enum {
   RU_A_L,  RU_A_U,
   RU_B_L,  RU_B_U,
   RU_V_L,  RU_V_U,
