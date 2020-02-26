@@ -1,7 +1,7 @@
 #include "shift_override.h"
 
 void handle_key_with_level_mods(uint16_t key, bool is_pressed) {
-  const uint8_t interesting_mods = MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT) | MOD_BIT(KC_RALT);
+  const uint8_t interesting_mods = MOD_BIT(KC_LSHIFT) |MOD_BIT(KC_RSHIFT) | MOD_BIT(KC_RALT);
 
   // Save the state
   const uint8_t real_mods = get_mods();
@@ -23,13 +23,10 @@ void handle_key_with_level_mods(uint16_t key, bool is_pressed) {
 
   // Enable the mods that we need
   add_mods(target_mods & interesting_mods);
+  unregister_code16(key & 0xFF); // ErgoDox EZ won't work without this
   if (is_pressed) {
-      unregister_code16(key & 0xFF); // ErgoDox EZ won't work without this
       register_code16(key & 0xFF);
-  } else {
-      unregister_code16(key & 0xFF);
-  }
-
+  } 
   // Restore the previous state
   set_mods(real_mods);
   set_weak_mods(weak_mods);
@@ -39,7 +36,7 @@ void handle_key_with_level_mods(uint16_t key, bool is_pressed) {
 }
 
 void override_key(keyrecord_t* record, uint16_t normal, uint16_t shifted) {
-  const uint8_t shift = MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT);
+  const uint8_t shift = MOD_BIT(KC_RSFT);
   bool shift_pressed = keyboard_report->mods & shift;
   const uint16_t target = shift_pressed ? shifted : normal;
   uint8_t keycode = target & 0xFF;

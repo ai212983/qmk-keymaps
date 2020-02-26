@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Hyper |   A  |   S  |   H  |   T  |   G  |  Y   |  N   |  E   |  O   |  I   |  "'  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |LShift|   Z  |   X  |   M  |   C  |   V  |  K   |  L   |  ,   |  .   |  /?  |  ~`  |
+ * |RShift|   Z  |   X  |   M  |   C  |   V  |  K   |  L   |  ,   |  .   |  /?  |  ~`  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      | ^/Del| ⌘/Esc|LWRBsp|   Meh/Tab   |RAISpc|⌥/Ent |      |      |      |
  * `-----------------------------------------------------------------------------------'
@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_WORKMAN] = LAYOUT_planck_grid(
   XXXXXXX, KC_Q,    KC_D,           KC_R,           KC_W,  KC_B,    KC_J,    KC_F,  KC_U,           KC_P,    KC_SCLN, KC_BSLS,
   KC_HYPR, KC_A,    KC_S,           KC_H,           KC_T,  KC_G,    KC_Y,    KC_N,  KC_E,           KC_O,    KC_I,    MY_QUOT,
-  KC_LSFT, KC_Z,    KC_X,           KC_M,           KC_C,  KC_V,    KC_K,    KC_L,  KC_COMM,        KC_DOT,  KC_SLSH, MY_TILD,
+  KC_RSFT, KC_Z,    KC_X,           KC_M,           KC_C,  KC_V,    KC_K,    KC_L,  KC_COMM,        KC_DOT,  KC_SLSH, MY_TILD,
   XXXXXXX, XXXXXXX, LCTL_T(KC_DEL), LGUI_T(KC_ESC), LOWER, MEH_TAB, MEH_TAB, RAISE, RALT_T(KC_ENT), XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   Ъ  |   П  |   И  |   О  |   Е  |   У  |  Р   |  Н   |  Т   |  С   |  Б   |  Х   |  - we do not need HYPER in Russian, it won't work anyway
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |LShift|   Э  |   Ю  |   Ь  |   Я  |  .?  |  ,/  |  Г   |  Д   |  Ж   |  Щ   |  "'  |
+ * |RShift|   Э  |   Ю  |   Ь  |   Я  |  .?  |  ,/  |  Г   |  Д   |  Ж   |  Щ   |  "'  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      | ^/Del| ⌘/Esc|LWRBsp|   Meh/Tab   |RAISpc|⌥/Ent |  Ë   |  /?  |  \|  |
  * `-----------------------------------------------------------------------------------'
@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_planck_grid(
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
   KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
+  KC_RSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
   BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Hyper |      | Left | Down |Right | PgDn |      |   4  |   5  |   6  |   -  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |LShift|      |      |      |      |      |   0  |   1  |   2  |   3  |   +  |      |
+ * |RShift|      |      |      |      |      |   0  |   1  |   2  |   3  |   +  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      | ^/Del| ⌘/Esc|██████|   Meh/Tab   |RAISpc|⌥+Ent |   .  |  Bsp |  =   |
  * `-----------------------------------------------------------------------------------'
@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Hyper|      |      |   +  |   -  |   =  |  *   |   (  |  )   |PrvTab|NxtTab|AppSwt|  
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |LShift|      |      |      |   _  |      |  &   |   {  |  }   |      |      |MsnCtl|
+ * |RShift|      |      |      |   _  |      |  &   |   {  |  }   |      |      |MsnCtl|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      | ^/Del| ⌘/Esc|LWRBsp|   Meh/Tab   |██████|⌥/Ent |      |      |      |
  * `-----------------------------------------------------------------------------------'
