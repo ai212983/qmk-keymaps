@@ -1,7 +1,6 @@
 #pragma once
-#include "base.h"
-#include "layers.h"
 #include "russian.h"
+#include "layers.h"
 
 enum keycodes {
   COMMON_SAFE_RANGE = RUSSIAN_SAFE_RANGE
