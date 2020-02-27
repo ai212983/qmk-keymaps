@@ -21,7 +21,7 @@ enum {
     _LAYERS_SAFE_RANGE
 };
 
-bool process_layer_override(uint16_t keycode, keyrecord_t *record);
+bool process_layers_override(uint16_t keycode, keyrecord_t *record);
 void set_persistent_layer(uint16_t layer);
 uint16_t get_active_layer(void);
 void set_prev_layer(void);
