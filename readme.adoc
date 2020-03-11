@@ -10,6 +10,18 @@ Both layouts are using Mac OS X Unicode Hex Input for Cyrillic.
 
 https://ergodox-ez.com/pages/wally[`Wally`] is used for flashing.
 
+== Known problems
+
+Recent GCC (9.2.x and above) are producing warnings on compilation.
+It breaks building Planck firmware. 
+There is https://github.com/qmk/qmk_firmware/issues/7006[unresolved ticket] at QMK firmware GitHub.
+
+Patch to fix it is located in `etc`, apply it with
+
+[source, sh]
+----
+git apply --directory qmk_firmware/lib/chibios/ etc/0001-gcc-compiler-warning-fix.patch
+----
 
 == Backlog
  - Lock LOWER by tapping (it is also ESC, so not compatible with built-in TT)
