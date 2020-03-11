@@ -1,0 +1,34 @@
+From dc377c831135d3224a721a57ea3acde2b9193005 Mon Sep 17 00:00:00 2001
+From: Dimitri Fedorov <df.41356@gmail.com>
+Date: Wed, 11 Mar 2020 10:04:05 +0100
+Subject: [PATCH] gcc compiler warning fix
+
+---
+ os/common/ext/CMSIS/include/cmsis_gcc.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/os/common/ext/CMSIS/include/cmsis_gcc.h b/os/common/ext/CMSIS/include/cmsis_gcc.h
+index d868f2e64..8b72e1492 100644
+--- a/os/common/ext/CMSIS/include/cmsis_gcc.h
++++ b/os/common/ext/CMSIS/include/cmsis_gcc.h
+@@ -161,7 +161,7 @@ __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_PSP(void)
+  */
+ __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_PSP(uint32_t topOfProcStack)
+ {
+-  __ASM volatile ("MSR psp, %0\n" : : "r" (topOfProcStack) : "sp");
++  __ASM volatile ("MSR psp, %0\n" : : "r" (topOfProcStack) : );
+ }
+ 
+ 
+@@ -187,7 +187,7 @@ __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_MSP(void)
+  */
+ __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_MSP(uint32_t topOfMainStack)
+ {
+-  __ASM volatile ("MSR msp, %0\n" : : "r" (topOfMainStack) : "sp");
++  __ASM volatile ("MSR msp, %0\n" : : "r" (topOfMainStack) : );
+ }
+ 
+ 
+-- 
+2.21.1 (Apple Git-122.3)
+
