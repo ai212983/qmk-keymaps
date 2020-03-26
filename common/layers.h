@@ -3,21 +3,16 @@
 
 enum {
   WORKMAN = BASE_SAFE_RANGE,
-  QWERTY,
   RUSSIAN,
-  PLOVER,
-  EXT_PLV, 
   LAYERS_SAFE_RANGE
 };
 
 enum {
     _WORKMAN,
-    _QWERTY,
     _RUSSIAN,
     _LOWER,
     _RAISE,
     _ADJUST,
-    _PLOVER,
     _LAYERS_SAFE_RANGE
 };
 

@@ -6,10 +6,6 @@ bool process_layers_override(uint16_t keycode, keyrecord_t *record) {
   }
   
   switch (keycode) {
-    case QWERTY:
-      set_persistent_layer(_QWERTY);
-      return false;
-
     case RUSSIAN:
       set_persistent_layer(_RUSSIAN);
       return false;

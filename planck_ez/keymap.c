@@ -21,7 +21,11 @@
 extern keymap_config_t keymap_config;
 
 enum planck_keycodes {
-  BACKLIT = RUSSIAN_SAFE_RANGE
+  GAMING = COMMON_SAFE_RANGE
+};
+
+enum planck_layers {
+  _GAMING = _COMMON_SAFE_RANGE
 };
 
 /* ⌘ - GUI, ^ - Ctrl, ⌥ - Alt, ⇧ - Shift
@@ -67,25 +71,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______, _______, _______, RU_YO,   KC_SLSH, KC_BSLS
 ),
 
-/* Qwerty
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | Alt  | GUI  |LOWER |    Space    |RAISE | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
-[_QWERTY] = LAYOUT_planck_grid(
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_RSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
-  BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
-),
-
-
 /* Lower - navigation and numpad
  * ,-----------------------------------------------------------------------------------.
  * |      |      | Home |  Up  | End  | PgUp |   %  |   7  |   8  |   9  |   *  |  /   |
@@ -123,31 +108,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
-/* Plover layer (http://opensteno.org)
- * ,-----------------------------------------------------------------------------------.
- * |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |   S  |   T  |   P  |   H  |   *  |   *  |   F  |   P  |   L  |   T  |   D  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |   S  |   K  |   W  |   R  |   *  |   *  |   R  |   B  |   G  |   S  |   Z  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Exit |      |      |   A  |   O  |             |   E  |   U  |      |      |      |
- * `-----------------------------------------------------------------------------------'
- */
-[_PLOVER] = LAYOUT_planck_grid(
-  KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,
-  XXXXXXX, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
-  XXXXXXX, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  EXT_PLV, XXXXXXX, XXXXXXX, KC_C,    KC_V,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    XXXXXXX, XXXXXXX, XXXXXXX
-),
-
 
 /* Adjust (Lower + Raise)
  *                      v------------------------RGB CONTROL--------------------v
  * ,-----------------------------------------------------------------------------------.
  * |Versn | Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |MUSmod|Aud on|Audoff|      |Wrkman|Rssian|Qwerty|Plover|      |      |
+ * |      |      |MUSmod|Aud on|Audoff|      |Wrkman|Rssian|Qwerty|Gaming|      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|TermOn|TermOf|      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -156,9 +123,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_planck_grid(
   KC_VRSN, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
-  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  _______, WORKMAN, RUSSIAN, QWERTY,   PLOVER,  _______, _______,
+  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  _______, WORKMAN, RUSSIAN, GAMING,   _______, _______, _______,
   _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
+),
+
+/* Gaming
+ * ,-----------------------------------------------------------------------------------.
+ * |   `  |   1  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |      |      |  Esc |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Tab  |   2  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |      |      | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |LShift|   3  |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |      |      | Enter|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | LCtrl|   4  |   5  |   6  | Space|             |      |      |      |      |WRKMAN|
+ * `-----------------------------------------------------------------------------------'
+ */
+[_GAMING] = LAYOUT_planck_grid(
+  KC_GRV,  KC_1, KC_Q, KC_W, KC_E,   KC_R,    KC_T,    KC_Y,    KC_U,    XXXXXXX, XXXXXXX, KC_ESC,
+  KC_TAB,  KC_2, KC_A, KC_S, KC_D,   KC_F,    KC_G,    KC_H,    KC_J,    XXXXXXX, XXXXXXX, KC_BSPC,
+  KC_LSFT, KC_3, KC_Z, KC_X, KC_C,   KC_V,    KC_B,    KC_N,    KC_M,    XXXXXXX, XXXXXXX, KC_ENT,
+  KC_LCTL, KC_4, KC_5, KC_6, KC_SPC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, WORKMAN
 )
 
 };
@@ -174,6 +159,11 @@ void indicate_layer(uint8_t layer) {
       right = 50;
       break;
 
+    case _GAMING:
+      left = 25;
+      right = 25;
+      break;
+
     default:
       break;
   }
@@ -182,11 +172,6 @@ void indicate_layer(uint8_t layer) {
 }
 
 // ----- Overridden defaults
-
-#ifdef AUDIO_ENABLE
-  float plover_song[][2]     = SONG(PLOVER_SOUND);
-  float plover_gb_song[][2]  = SONG(PLOVER_GOODBYE_SOUND);
-#endif
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
@@ -224,49 +209,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 
   switch (keycode) {
-
-    case BACKLIT:
-      if (record->event.pressed) {
-        register_code(KC_RSFT);
-        #ifdef BACKLIGHT_ENABLE
-          backlight_step();
-        #endif
-        #ifdef KEYBOARD_planck_rev5
-          writePinLow(E6);
-        #endif
-      } else {
-        unregister_code(KC_RSFT);
-        #ifdef KEYBOARD_planck_rev5
-          writePinHigh(E6);
-        #endif
-      }
-      return false;
-
-    case PLOVER:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          stop_all_notes();
-          PLAY_SONG(plover_song);
-        #endif
-        layer_off(_RAISE);
-        layer_off(_LOWER);
-        layer_off(_ADJUST);
-        layer_on(_PLOVER);
-        if (!eeconfig_is_enabled()) {
-          eeconfig_init();
-        }
-        keymap_config.raw = eeconfig_read_keymap();
-        keymap_config.nkro = 1;
-        eeconfig_update_keymap(keymap_config.raw);
-      }
-      return false;
-    case EXT_PLV:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(plover_gb_song);
-        #endif
-        layer_off(_PLOVER);
-      }
+    case GAMING:
+      set_persistent_layer(_GAMING);
       return false;
   }
   return true;
