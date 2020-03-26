@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |RShift|   Z  |   X  |   M  |   C  |   V  |  K   |  L   |  ,   |  .   |  /?  |  ~`  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      | ^/Del| ⌘/Esc|LWRBsp|   Meh/Tab   |RAISpc|⌥/Ent |      |      |      |
+ * |  ⌥   |      | ^/Del| ⌘/Esc|LWRBsp|   Meh/Tab   |RAISpc|⌥/Ent |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 
@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, KC_Q,    KC_D,           KC_R,           KC_W,  KC_B,    KC_J,    KC_F,  KC_U,           KC_P,    KC_SCLN, KC_BSLS,
   KC_HYPR, KC_A,    KC_S,           KC_H,           KC_T,  KC_G,    KC_Y,    KC_N,  KC_E,           KC_O,    KC_I,    MY_QUOT,
   KC_RSFT, KC_Z,    KC_X,           KC_M,           KC_C,  KC_V,    KC_K,    KC_L,  KC_COMM,        KC_DOT,  KC_SLSH, MY_TILD,
-  XXXXXXX, XXXXXXX, LCTL_T(KC_DEL), LGUI_T(KC_ESC), LOWER, MEH_TAB, MEH_TAB, RAISE, RALT_T(KC_ENT), XXXXXXX, XXXXXXX, XXXXXXX
+  KC_RALT, XXXXXXX, LCTL_T(KC_DEL), LGUI_T(KC_ESC), LOWER, MEH_TAB, MEH_TAB, RAISE, RALT_T(KC_ENT), XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 /* Russian
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |RShift|      |      |      |      |      |   0  |   1  |   2  |   3  |   +  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | RAlt |      | ^/Del| ⌘/Esc|██████|   Meh/Tab   |RAISpc|⌥+Ent |   .  |  Bsp |  =   |
+ * |      |      | ^/Del| ⌘/Esc|██████|   Meh/Tab   |RAISpc|⌥+Ent |   .  |  Bsp |  =   |
  * `-----------------------------------------------------------------------------------'
  * Ctrl is shifted for better reachability by pinky
  */
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, XXXXXXX, KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_PERC, KC_7,    KC_8,         KC_9,   KC_ASTR, KC_SLSH,
   _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, XXXXXXX, KC_4,    KC_5,         KC_6,   KC_MINS, XXXXXXX,
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_0,    KC_1,    KC_2,         KC_3,   KC_PLUS, XXXXXXX,
-  KC_RALT, _______, _______, _______, _______, _______, _______, _______, RALT(KC_ENT), KC_DOT, KC_BSPC, KC_EQL
+  _______, _______, _______, _______, _______, _______, _______, _______, RALT(KC_ENT), KC_DOT, KC_BSPC, KC_EQL
 ),
 
 /* Raise - symbols
