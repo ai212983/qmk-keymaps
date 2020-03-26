@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |RShift|      |      |      |      |      |   0  |   1  |   2  |   3  |   +  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      | ^/Del| ⌘/Esc|██████|   Meh/Tab   |RAISpc|⌥+Ent |   .  |  Bsp |  =   |
+ * | RAlt |      | ^/Del| ⌘/Esc|██████|   Meh/Tab   |RAISpc|⌥+Ent |   .  |  Bsp |  =   |
  * `-----------------------------------------------------------------------------------'
  * Ctrl is shifted for better reachability by pinky
  */
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, XXXXXXX, KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_PERC, KC_7,    KC_8,         KC_9,   KC_ASTR, KC_SLSH,
   _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, XXXXXXX, KC_4,    KC_5,         KC_6,   KC_MINS, XXXXXXX,
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_0,    KC_1,    KC_2,         KC_3,   KC_PLUS, XXXXXXX,
-  _______, _______, _______, _______, _______, _______, _______, _______, RALT(KC_ENT), KC_DOT, KC_BSPC, KC_EQL
+  KC_RALT, _______, _______, _______, _______, _______, _______, _______, RALT(KC_ENT), KC_DOT, KC_BSPC, KC_EQL
 ),
 
 /* Raise - symbols
