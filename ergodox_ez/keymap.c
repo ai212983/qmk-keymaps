@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      | LAlt |       |      |      |      |
+ *                                 |      |      | RAlt |       |Insert|      |      |
  *                                 | ⌘/Esc|LwrBsp|------|       |------|RaiSpc|⌥/Ent |
  *                                 |      |      | ^/Del|       |MehTab|      |      |
  *                                 `--------------------'       `--------------------'
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                                 
                                                     XXXXXXX, XXXXXXX,
-                                                             KC_LALT,
+                                                             KC_RALT,
                                     LGUI_T(KC_ESC), LOWER,   LCTL_T(KC_DEL),
   // right hand
   XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, KC_K,    KC_L,    KC_COMM, KC_DOT,  KC_SLSH, MY_TILD,
                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,
-  XXXXXXX,
+  KC_INS,
   MEH_TAB, RAISE, RALT_T(KC_ENT)
 ),
 
@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      | RAlt |       |Insert|      |      |
  *                                 | ⌘/Esc|LwrBsp|------|       |------|RaiSpc|⌥/Ent |
  *                                 |      |      | ^/Del|       |MehTab|      |      |
  *                                 `--------------------'       `--------------------'
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, RU_AE,   RU_YU,   RU_SS,   RU_YA,   RU_DOT,  XXXXXXX,
   _______, RU_YO,   XXXXXXX, XXXXXXX, XXXXXXX,
                                                XXXXXXX, XXXXXXX,
-                                                        XXXXXXX,
+                                                        _______,
                                       _______, _______, _______,
   // right hand
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, RU_COMM, RU_G,    RU_D,    RU_ZH,   RU_SC,   MY_QUOT,
                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSLS,
   XXXXXXX, XXXXXXX,
-  XXXXXXX,
+  _______,
   _______, _______, _______
 ),
 
