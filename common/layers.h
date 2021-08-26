@@ -4,6 +4,7 @@
 enum {
   WORKMAN = BASE_SAFE_RANGE,
   RUSSIAN,
+  GAMING,
   LAYERS_SAFE_RANGE
 };
 
@@ -13,6 +14,7 @@ enum {
     _LOWER,
     _RAISE,
     _ADJUST,
+    _GAMING,
     _LAYERS_SAFE_RANGE
 };
 
