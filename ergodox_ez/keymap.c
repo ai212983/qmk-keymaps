@@ -22,7 +22,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Hyper  |   A  |   S  |   H  |   T  |   G  |------|           |------|   Y  |   N  |   E  |   O  |   I  |   "'   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | RShift |   Z  |   X  |   M  |   C  |   V  |      |           |      |   K  |   L  |   ,  |   .  |  /?  |   ~`   |
+ * | RShift |   Z  |   X  |   M  |   C  |   V  |      |           |      |   K  |   L  |   ,  |   .  |  /?  |   `~   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -36,20 +36,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_WORKMAN] = LAYOUT_ergodox(
   // left hand
-  KC_VRSN, KC_1,    KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,
-  XXXXXXX, KC_Q,    KC_D,    KC_R,    KC_W,    KC_B, XXXXXXX,
+  KC_VRSN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_Q,    KC_D,    KC_R,    KC_W,    KC_B,    XXXXXXX,
   KC_HYPR, KC_A,    KC_S,    KC_H,    KC_T,    KC_G,
-  KC_RSFT, KC_Z,    KC_X,    KC_M,    KC_C,    KC_V, XXXXXXX,
+  KC_RSFT, KC_Z,    KC_X,    KC_M,    KC_C,    KC_V,    XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                                 
-                                                    XXXXXXX, XXXXXXX,
+                                                    XXXXXXX, KC_LALT,
                                                              KC_RALT,
                                     LGUI_T(KC_ESC), LOWER,   LCTL_T(KC_DEL),
   // right hand
-  XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
+  HUE_PWR, HUE_BRG, HUE_TMP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_J,    KC_F,    KC_U,    KC_P,    KC_SCLN, KC_BSLS,
            KC_Y,    KC_N,    KC_E,    KC_O,    KC_I,    MY_QUOT,
-  XXXXXXX, KC_K,    KC_L,    KC_COMM, KC_DOT,  KC_SLSH, MY_TILD,
+  XXXXXXX, KC_K,    KC_L,    KC_COMM, KC_DOT,  KC_SLSH, KC_GRV,
                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,
   KC_INS,
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     XXXXXXX, XXXXXXX, KC_DOT,  KC_BSPC, KC_EQL, 
   XXXXXXX, XXXXXXX,
   XXXXXXX,
-  _______, _______, RALT(KC_ENT)
+  _______, _______, LALT(KC_ENT)
 ),
 
 /* Raise - symbols layer
@@ -202,24 +202,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 [_ADJUST] = LAYOUT_ergodox(
-  // left hand
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_VRSN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  RGB_TOG, RGB_SLD, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                               XXXXXXX, XXXXXXX,
-                                                        XXXXXXX,
-                                      XXXXXXX, _______, XXXXXXX,
-  // right hand
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-           WORKMAN, RUSSIAN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX,
-  XXXXXXX,
-  XXXXXXX, _______, XXXXXXX
+        // left hand
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_VRSN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        RGB_TOG, RGB_SLD, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX,
+        XXXXXXX,
+        XXXXXXX, _______, XXXXXXX,
+        // right hand
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        WORKMAN, RUSSIAN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX,
+        XXXXXXX,
+        XXXXXXX, _______, XXXXXXX
 )
 
 };

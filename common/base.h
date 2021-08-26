@@ -15,11 +15,14 @@ enum {
 #define RAISE LT(_RAISE, KC_SPC)
 #define MEH_TAB MEH_T(KC_TAB)
 
-#define APP_SWT KC_F20
+#define HUE_TMP KC_F13
+#define HUE_BRG KC_F14
+#define HUE_PWR KC_F15
 #define APP_LNC KC_F16
 #define MSN_CTL KC_F17
 #define PRV_SPC KC_F18
 #define NXT_SPC KC_F19
+#define APP_SWT KC_F20
 #define PRV_TAB A(G(KC_LEFT))
 #define NXT_TAB A(G(KC_RIGHT))
 
