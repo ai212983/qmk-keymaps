@@ -20,16 +20,6 @@
 
 extern keymap_config_t keymap_config;
 
-typedef struct {
-    bool is_press_action;
-    uint8_t state;
-} tap;
-
-// Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-        // Tap once for Guardian Angel, for Crouch + GA
-        [T_GA_CR] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_finished, td_reset)
-};
 
 /* ⌘ - GUI, ^ - Ctrl, ⌥ - Alt, ⇧ - Shift
  * Hyper - Ctrl + Shift + Alt + Gui
@@ -137,16 +127,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Tab  |   2  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |      |      | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Sft/Ct|   3  |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |      |      | Enter|
+ * | LSft |   3  |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |      |      | Enter|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | LCtrl|   4  |   5  |   6  | Space|             |      |      |      |      |WRKMAN|
+ * | LCtrl|   4  |   5  |   6  | Space|             |  DEL |      |      |      |WRKMAN|
  * `-----------------------------------------------------------------------------------'
  */
 [_GAMING] = LAYOUT_planck_grid(
   KC_GRV,  KC_1, KC_Q, KC_W, KC_E,   KC_R,    KC_T,    KC_Y,    KC_U,    XXXXXXX, XXXXXXX, KC_ESC,
   KC_TAB,  KC_2, KC_A, KC_S, KC_D,   KC_F,    KC_G,    KC_H,    KC_J,    XXXXXXX, XXXXXXX, KC_BSPC,
-  T_GA_CR, KC_3, KC_Z, KC_X, KC_C,   KC_V,    KC_B,    KC_N,    KC_M,    XXXXXXX, XXXXXXX, KC_ENT,
-  KC_LCTL, KC_4, KC_5, KC_6, KC_SPC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, WORKMAN
+  KC_LSFT, KC_3, KC_Z, KC_X, KC_C,   KC_V,    KC_B,    KC_N,    KC_M,    XXXXXXX, XXXXXXX, KC_ENT,
+  KC_LCTL, KC_4, KC_5, KC_6, KC_SPC, XXXXXXX, XXXXXXX, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX, WORKMAN
 )
 
 };
@@ -296,25 +286,5 @@ bool music_mask_user(uint16_t keycode) {
     default:
       return true;
   }
-}
-
-void td_finished(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        register_code(KC_SPC);
-    } else {
-        register_code(KC_LCTRL);
-        wait_ms(15 + rand() % 6);
-        register_code(KC_SPC);
-    }
-}
-
-void td_reset(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        unregister_code(KC_SPC);
-    } else {
-        unregister_code(KC_LCTRL);
-        wait_ms(5 + rand() % 5);
-        unregister_code(KC_SPC);
-    }
 }
 
