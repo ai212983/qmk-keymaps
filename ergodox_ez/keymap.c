@@ -16,13 +16,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Workman
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * | Version|   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   -_   |
+ * | Version|   1  |   2  |   3  |   4  |   5  |      |           |      |      |      |      |      |      |  RMB   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   Q  |   D  |   R  |   W  |   B  |      |           |      |   J  |   F  |   U  |   P  |   :  |   \|   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Hyper  |   A  |   S  |   H  |   T  |   G  |------|           |------|   Y  |   N  |   E  |   O  |   I  |   "'   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | RShift |   Z  |   X  |   M  |   C  |   V  |      |           |      |   K  |   L  |   ,  |   .  |  /?  |   `~   |
+ * | RShift |   Z  |   X  |   M  |   C  |   V  |      |           | LMB  |   K  |   L  |   ,  |   .  |  /?  |   `~   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -46,11 +46,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                              KC_RALT,
                                     LGUI_T(KC_ESC), LOWER,   LCTL_T(KC_DEL),
   // right hand
-  HUE_PWR, HUE_BRG, HUE_TMP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  HUE_PWR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN2,
   XXXXXXX, KC_J,    KC_F,    KC_U,    KC_P,    KC_SCLN, KC_BSLS,
            KC_Y,    KC_N,    KC_E,    KC_O,    KC_I,    MY_QUOT,
-  XXXXXXX, KC_K,    KC_L,    KC_COMM, KC_DOT,  KC_SLSH, KC_GRV,
-                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_BTN1, KC_K,    KC_L,    KC_COMM, KC_DOT,  KC_SLSH, KC_GRV,
+                    HUE_BRG, HUE_TMP, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX,
   KC_INS,
   MEH_TAB, RAISE, RALT_T(KC_ENT)
